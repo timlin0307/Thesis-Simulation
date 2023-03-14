@@ -30,7 +30,7 @@ function z = i_k_iterative(mode, k, M, N)
                     %     % Combinations of inner multiple sum of series
                     %     c = c * nchoosek(M-sum_series(itr_sum_series, 1, i_k-1), itr_sum_series(i_k));
                     % end
-                    c = c * nchoosek(M-sum_series(itr_sum_series, 1, i_k-1), itr_sum_series(i_k)); % Combinations of the inner sum of series
+                    c = c * nchoosek(M-sum(itr_sum_series(1:i_k-1)), itr_sum_series(i_k)); % Combinations of the inner sum of series
                 end
            
                 % Don't need this if-else because there's no possible that combination cannot be found
@@ -43,13 +43,13 @@ function z = i_k_iterative(mode, k, M, N)
 
                 % Combinations of the last sum of series
                 % fprintf("n = %d, k = %d\n", N-k, M-sum_series(itr_sum_series, 1, k))
-                if M-sum_series(itr_sum_series, 1, k) > N-k % Combination cannot be found
+                if M-sum(itr_sum_series) > N-k % Combination cannot be found
                     z = z + 0; % Combination equals to 0
                 else
                     if mode == 'C'
-                        c = c * nchoosek(N-k, M-sum_series(itr_sum_series, 1, k)) * factorial(M-sum_series(itr_sum_series, 1, k));
+                        c = c * nchoosek(N-k, M-sum(itr_sum_series)) * factorial(M-sum(itr_sum_series));
                     elseif mode == 'S'
-                        c = c * nchoosek(N-k, M-sum_series(itr_sum_series, 1, k)) * factorial(M-sum_series(itr_sum_series, 1, k)) * (M-sum_series(itr_sum_series, 1, k));
+                        c = c * nchoosek(N-k, M-sum(itr_sum_series)) * factorial(M-sum(itr_sum_series)) * (M-sum(itr_sum_series));
                     end
                     z = z + c; % The summation of those mutiplied-combinations
                 end
@@ -68,8 +68,8 @@ function z = i_k_iterative(mode, k, M, N)
     
             % When the sum of serie finishing (lower boundary >= upper boundary)
             % fprintf("lower = %d, upper = %d\n", itr_sum_series(i_n), M-2*(k-i_n)-sum_series(itr_sum_series, 1, i_n-1))
-            if itr_sum_series(i_n) >= M-2*(k-i_n)-sum_series(itr_sum_series, 1, i_n-1)
-                while itr_sum_series(i_n) >= M-2*(k-i_n)-sum_series(itr_sum_series, 1, i_n-1)
+            if itr_sum_series(i_n) >= M-2*(k-i_n)-sum(itr_sum_series(1:i_n-1))
+                while itr_sum_series(i_n) >= M-2*(k-i_n)-sum(itr_sum_series(1:i_n-1))
                     itr_sum_series(i_n) = 2; % If outer sigma finished, go inner sigma
                     i_n = i_n - 1;
                     if i_n <= 0 % There's no element 0 in an array
@@ -88,9 +88,10 @@ function z = i_k_iterative(mode, k, M, N)
 end
 
 % Cannot use function "symsum", so creating this one function
-function result = sum_series(func, lower, upper)
-    result = 0;
-    for i = lower:upper
-        result = result + func(i);
-    end
-end
+% However, I found it's possible to use function "sum"
+% function result = sum_series(func, lower, upper)
+%     result = 0;
+%     for i = lower:upper
+%         result = result + func(i);
+%     end
+% end
