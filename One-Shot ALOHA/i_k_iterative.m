@@ -1,4 +1,5 @@
 % i_k_iterative('C', 3, 10, 8) for testing
+% i_k_iterative('C', 13, 39, 14) for testing
 function z = i_k_iterative(mode, k, M, N)
     % Calculate the sum of nchoosek(n, iterative elements of boundary)
     % f = @(n, boundary) sum(factorial(n)./(factorial(n-boundary).*factorial(boundary)));
@@ -18,6 +19,8 @@ function z = i_k_iterative(mode, k, M, N)
             % To avoid the duplicated calculation (e.g. calculate [2 2 2] twice)
             if i_n == k % Always calculating from final result of the number iteration of sum of series
                 % fprintf("i_n = %d, %d %d %d\n", i_n, itr_sum_series(1), itr_sum_series(2), itr_sum_series(3))
+                % fprintf("i_n = %d, %d %d %d %d %d %d %d\n", i_n, itr_sum_series(1), itr_sum_series(2), itr_sum_series(3), itr_sum_series(4), itr_sum_series(5), itr_sum_series(6), itr_sum_series(7))
+                % fprintf("i_n = %d, %d %d %d %d %d %d %d %d %d %d %d %d %d\n", i_n, itr_sum_series(1), itr_sum_series(2), itr_sum_series(3), itr_sum_series(4), itr_sum_series(5), itr_sum_series(6), itr_sum_series(7), itr_sum_series(8), itr_sum_series(9), itr_sum_series(10), itr_sum_series(11), itr_sum_series(12), itr_sum_series(13))
         
                 % All combinations based on the iterative number of each sum of series
                 c = 1; % The mutiplied-combinations of each iteration
@@ -70,7 +73,7 @@ function z = i_k_iterative(mode, k, M, N)
             % fprintf("lower = %d, upper = %d\n", itr_sum_series(i_n), M-2*(k-i_n)-sum_series(itr_sum_series, 1, i_n-1))
             if itr_sum_series(i_n) >= M-2*(k-i_n)-sum(itr_sum_series(1:i_n-1))
                 while itr_sum_series(i_n) >= M-2*(k-i_n)-sum(itr_sum_series(1:i_n-1))
-                    itr_sum_series(i_n) = 2; % If outer sigma finished, go inner sigma
+                    itr_sum_series(i_n) = 2; % If outer sigma finished, go inner sum of series
                     i_n = i_n - 1;
                     if i_n <= 0 % There's no element 0 in an array
                         break
