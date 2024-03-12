@@ -1,0 +1,620 @@
+ana_cud_m_1 = pandas.read_csv('./LEO600_13400/ana_testresult_cud_m_1.csv')
+ana_cud_m_2 = pandas.read_csv('./LEO600_13400/ana_testresult_cud_m_2.csv')
+ana_cud_m_3 = pandas.read_csv('./LEO600_13400/ana_testresult_cud_m_3.csv')
+
+ana_cud_N_1 = pandas.read_csv('./LEO600_13400/ana_testresult_cud_N_1.csv')
+ana_cud_N_2 = pandas.read_csv('./LEO600_13400/ana_testresult_cud_N_2.csv')
+ana_cud_N_3 = pandas.read_csv('./LEO600_13400/ana_testresult_cud_N_3.csv')
+
+ana_cud_wrar_1 = pandas.read_csv('./LEO600_13400/ana_testresult_cud_wrar_1.csv')
+ana_cud_wrar_2 = pandas.read_csv('./LEO600_13400/ana_testresult_cud_wrar_2.csv')
+ana_cud_wrar_3 = pandas.read_csv('./LEO600_13400/ana_testresult_cud_wrar_3.csv')
+
+ana_cud_nptmax_1 = pandas.read_csv('./LEO600_13400/ana_testresult_cud_nptmax_1.csv')
+ana_cud_nptmax_2 = pandas.read_csv('./LEO600_13400/ana_testresult_cud_nptmax_2.csv')
+ana_cud_nptmax_3 = pandas.read_csv('./LEO600_13400/ana_testresult_cud_nptmax_3.csv')
+ana_cud_nptmax_4 = pandas.read_csv('./LEO600_13400/ana_testresult_cud_nptmax_4.csv')
+
+ana_cud_wbo_1 = pandas.read_csv('./LEO600_13400/ana_testresult_cud_wbo_1.csv')
+ana_cud_wbo_2 = pandas.read_csv('./LEO600_13400/ana_testresult_cud_wbo_2.csv')
+ana_cud_wbo_3 = pandas.read_csv('./LEO600_13400/ana_testresult_cud_wbo_3.csv')
+ana_cud_wbo_4 = pandas.read_csv('./LEO600_13400/ana_testresult_cud_wbo_4.csv')
+
+ana_dud_m_1 = pandas.read_csv('./LEO600_13400/ana_testresult_dud_m_1.csv')
+ana_dud_m_2 = pandas.read_csv('./LEO600_13400/ana_testresult_dud_m_2.csv')
+ana_dud_m_3 = pandas.read_csv('./LEO600_13400/ana_testresult_dud_m_3.csv')
+
+ana_dud_N_1 = pandas.read_csv('./LEO600_13400/ana_testresult_dud_N_1.csv')
+ana_dud_N_2 = pandas.read_csv('./LEO600_13400/ana_testresult_dud_N_2.csv')
+ana_dud_N_3 = pandas.read_csv('./LEO600_13400/ana_testresult_dud_N_3.csv')
+
+ana_dud_wrar_1 = pandas.read_csv('./LEO600_13400/ana_testresult_dud_wrar_1.csv')
+ana_dud_wrar_2 = pandas.read_csv('./LEO600_13400/ana_testresult_dud_wrar_2.csv')
+ana_dud_wrar_3 = pandas.read_csv('./LEO600_13400/ana_testresult_dud_wrar_3.csv')
+
+ana_dud_nptmax_1 = pandas.read_csv('./LEO600_13400/ana_testresult_dud_nptmax_1.csv')
+ana_dud_nptmax_2 = pandas.read_csv('./LEO600_13400/ana_testresult_dud_nptmax_2.csv')
+ana_dud_nptmax_3 = pandas.read_csv('./LEO600_13400/ana_testresult_dud_nptmax_3.csv')
+ana_dud_nptmax_4 = pandas.read_csv('./LEO600_13400/ana_testresult_dud_nptmax_4.csv')
+
+ana_dud_wbo_1 = pandas.read_csv('./LEO600_13400/ana_testresult_dud_wbo_1.csv')
+ana_dud_wbo_2 = pandas.read_csv('./LEO600_13400/ana_testresult_dud_wbo_2.csv')
+ana_dud_wbo_3 = pandas.read_csv('./LEO600_13400/ana_testresult_dud_wbo_3.csv')
+ana_dud_wbo_4 = pandas.read_csv('./LEO600_13400/ana_testresult_dud_wbo_4.csv')
+
+err_Ps_T_m_1 = [0.0 for i in range(0, len(arrival_rate))]
+err_Ps_T_m_2 = [0.0 for i in range(0, len(arrival_rate))]
+err_Ps_T_m_3 = [0.0 for i in range(0, len(arrival_rate))]
+
+err_Ps_T_N_1 = [0.0 for i in range(0, len(arrival_rate))]
+err_Ps_T_N_2 = [0.0 for i in range(0, len(arrival_rate))]
+err_Ps_T_N_3 = [0.0 for i in range(0, len(arrival_rate))]
+
+err_Ps_T_wrar_1 = [0.0 for i in range(0, len(arrival_rate))]
+err_Ps_T_wrar_2 = [0.0 for i in range(0, len(arrival_rate))]
+err_Ps_T_wrar_3 = [0.0 for i in range(0, len(arrival_rate))]
+
+err_Ps_T_nptmax_1 = [0.0 for i in range(0, len(arrival_rate))]
+err_Ps_T_nptmax_2 = [0.0 for i in range(0, len(arrival_rate))]
+err_Ps_T_nptmax_3 = [0.0 for i in range(0, len(arrival_rate))]
+err_Ps_T_nptmax_4 = [0.0 for i in range(0, len(arrival_rate))]
+
+err_Ps_T_wbo_1 = [0.0 for i in range(0, len(arrival_rate))]
+err_Ps_T_wbo_2 = [0.0 for i in range(0, len(arrival_rate))]
+err_Ps_T_wbo_3 = [0.0 for i in range(0, len(arrival_rate))]
+err_Ps_T_wbo_4 = [0.0 for i in range(0, len(arrival_rate))]
+
+err_Da_T_m_1 = [0.0 for i in range(0, len(arrival_rate))]
+err_Da_T_m_2 = [0.0 for i in range(0, len(arrival_rate))]
+err_Da_T_m_3 = [0.0 for i in range(0, len(arrival_rate))]
+
+err_Da_T_N_1 = [0.0 for i in range(0, len(arrival_rate))]
+err_Da_T_N_2 = [0.0 for i in range(0, len(arrival_rate))]
+err_Da_T_N_3 = [0.0 for i in range(0, len(arrival_rate))]
+
+err_Da_T_wrar_1 = [0.0 for i in range(0, len(arrival_rate))]
+err_Da_T_wrar_2 = [0.0 for i in range(0, len(arrival_rate))]
+err_Da_T_wrar_3 = [0.0 for i in range(0, len(arrival_rate))]
+
+err_Da_T_nptmax_1 = [0.0 for i in range(0, len(arrival_rate))]
+err_Da_T_nptmax_2 = [0.0 for i in range(0, len(arrival_rate))]
+err_Da_T_nptmax_3 = [0.0 for i in range(0, len(arrival_rate))]
+err_Da_T_nptmax_4 = [0.0 for i in range(0, len(arrival_rate))]
+
+err_Da_T_wbo_1 = [0.0 for i in range(0, len(arrival_rate))]
+err_Da_T_wbo_2 = [0.0 for i in range(0, len(arrival_rate))]
+err_Da_T_wbo_3 = [0.0 for i in range(0, len(arrival_rate))]
+err_Da_T_wbo_4 = [0.0 for i in range(0, len(arrival_rate))]
+
+err_Ur_PUSCH_T_m_1 = [0.0 for i in range(0, len(arrival_rate))]
+err_Ur_PUSCH_T_m_2 = [0.0 for i in range(0, len(arrival_rate))]
+err_Ur_PUSCH_T_m_3 = [0.0 for i in range(0, len(arrival_rate))]
+
+err_Ur_PUSCH_T_N_1 = [0.0 for i in range(0, len(arrival_rate))]
+err_Ur_PUSCH_T_N_2 = [0.0 for i in range(0, len(arrival_rate))]
+err_Ur_PUSCH_T_N_3 = [0.0 for i in range(0, len(arrival_rate))]
+
+err_Ur_PUSCH_T_wrar_1 = [0.0 for i in range(0, len(arrival_rate))]
+err_Ur_PUSCH_T_wrar_2 = [0.0 for i in range(0, len(arrival_rate))]
+err_Ur_PUSCH_T_wrar_3 = [0.0 for i in range(0, len(arrival_rate))]
+
+err_Ur_PUSCH_T_nptmax_1 = [0.0 for i in range(0, len(arrival_rate))]
+err_Ur_PUSCH_T_nptmax_2 = [0.0 for i in range(0, len(arrival_rate))]
+err_Ur_PUSCH_T_nptmax_3 = [0.0 for i in range(0, len(arrival_rate))]
+err_Ur_PUSCH_T_nptmax_4 = [0.0 for i in range(0, len(arrival_rate))]
+
+err_Ur_PUSCH_T_wbo_1 = [0.0 for i in range(0, len(arrival_rate))]
+err_Ur_PUSCH_T_wbo_2 = [0.0 for i in range(0, len(arrival_rate))]
+err_Ur_PUSCH_T_wbo_3 = [0.0 for i in range(0, len(arrival_rate))]
+err_Ur_PUSCH_T_wbo_4 = [0.0 for i in range(0, len(arrival_rate))]
+
+for arr in range(0, len(arrival_rate)):
+    err_Ps_T_m_1[arr] = float((abs(ana_cud_m_1.Ps_T[arr] - ana_dud_m_1.Ps_T[arr]) / ana_cud_m_1.Ps_T[arr]) * 100)
+    err_Ps_T_m_2[arr] = float((abs(ana_cud_m_2.Ps_T[arr] - ana_dud_m_2.Ps_T[arr]) / ana_cud_m_2.Ps_T[arr]) * 100)
+    err_Ps_T_m_3[arr] = float((abs(ana_cud_m_3.Ps_T[arr] - ana_dud_m_3.Ps_T[arr]) / ana_cud_m_3.Ps_T[arr]) * 100)
+    
+    err_Ps_T_N_1[arr] = float((abs(ana_cud_N_1.Ps_T[arr] - ana_dud_N_1.Ps_T[arr]) / ana_cud_N_1.Ps_T[arr]) * 100)
+    err_Ps_T_N_2[arr] = float((abs(ana_cud_N_2.Ps_T[arr] - ana_dud_N_2.Ps_T[arr]) / ana_cud_N_2.Ps_T[arr]) * 100)
+    err_Ps_T_N_3[arr] = float((abs(ana_cud_N_3.Ps_T[arr] - ana_dud_N_3.Ps_T[arr]) / ana_cud_N_3.Ps_T[arr]) * 100)
+    
+    err_Ps_T_wrar_1[arr] = float((abs(ana_cud_wrar_1.Ps_T[arr] - ana_dud_wrar_1.Ps_T[arr]) / ana_cud_wrar_1.Ps_T[arr]) * 100)
+    err_Ps_T_wrar_2[arr] = float((abs(ana_cud_wrar_2.Ps_T[arr] - ana_dud_wrar_2.Ps_T[arr]) / ana_cud_wrar_2.Ps_T[arr]) * 100)
+    err_Ps_T_wrar_3[arr] = float((abs(ana_cud_wrar_3.Ps_T[arr] - ana_dud_wrar_3.Ps_T[arr]) / ana_cud_wrar_3.Ps_T[arr]) * 100)
+    
+    err_Ps_T_nptmax_1[arr] = float((abs(ana_cud_nptmax_1.Ps_T[arr] - ana_dud_nptmax_1.Ps_T[arr]) / ana_cud_nptmax_1.Ps_T[arr]) * 100)
+    err_Ps_T_nptmax_2[arr] = float((abs(ana_cud_nptmax_2.Ps_T[arr] - ana_dud_nptmax_2.Ps_T[arr]) / ana_cud_nptmax_2.Ps_T[arr]) * 100)
+    err_Ps_T_nptmax_3[arr] = float((abs(ana_cud_nptmax_3.Ps_T[arr] - ana_dud_nptmax_3.Ps_T[arr]) / ana_cud_nptmax_3.Ps_T[arr]) * 100)
+    err_Ps_T_nptmax_4[arr] = float((abs(ana_cud_nptmax_4.Ps_T[arr] - ana_dud_nptmax_4.Ps_T[arr]) / ana_cud_nptmax_4.Ps_T[arr]) * 100)
+    
+    err_Ps_T_wbo_1[arr] = float((abs(ana_cud_wbo_1.Ps_T[arr] - ana_dud_wbo_1.Ps_T[arr]) / ana_cud_wbo_1.Ps_T[arr]) * 100)
+    err_Ps_T_wbo_2[arr] = float((abs(ana_cud_wbo_2.Ps_T[arr] - ana_dud_wbo_2.Ps_T[arr]) / ana_cud_wbo_2.Ps_T[arr]) * 100)
+    err_Ps_T_wbo_3[arr] = float((abs(ana_cud_wbo_3.Ps_T[arr] - ana_dud_wbo_3.Ps_T[arr]) / ana_cud_wbo_3.Ps_T[arr]) * 100)
+    err_Ps_T_wbo_4[arr] = float((abs(ana_cud_wbo_4.Ps_T[arr] - ana_dud_wbo_4.Ps_T[arr]) / ana_cud_wbo_4.Ps_T[arr]) * 100)
+    
+    err_Da_T_m_1[arr] = float((abs(ana_cud_m_1.Da_T[arr] - ana_dud_m_1.Da_T[arr]) / ana_cud_m_1.Da_T[arr]) * 100)
+    err_Da_T_m_2[arr] = float((abs(ana_cud_m_2.Da_T[arr] - ana_dud_m_2.Da_T[arr]) / ana_cud_m_2.Da_T[arr]) * 100)
+    err_Da_T_m_3[arr] = float((abs(ana_cud_m_3.Da_T[arr] - ana_dud_m_3.Da_T[arr]) / ana_cud_m_3.Da_T[arr]) * 100)
+    
+    err_Da_T_N_1[arr] = float((abs(ana_cud_N_1.Da_T[arr] - ana_dud_N_1.Da_T[arr]) / ana_cud_N_1.Da_T[arr]) * 100)
+    err_Da_T_N_2[arr] = float((abs(ana_cud_N_2.Da_T[arr] - ana_dud_N_2.Da_T[arr]) / ana_cud_N_2.Da_T[arr]) * 100)
+    err_Da_T_N_3[arr] = float((abs(ana_cud_N_3.Da_T[arr] - ana_dud_N_3.Da_T[arr]) / ana_cud_N_3.Da_T[arr]) * 100)
+    
+    err_Da_T_wrar_1[arr] = float((abs(ana_cud_wrar_1.Da_T[arr] - ana_dud_wrar_1.Da_T[arr]) / ana_cud_wrar_1.Da_T[arr]) * 100)
+    err_Da_T_wrar_2[arr] = float((abs(ana_cud_wrar_2.Da_T[arr] - ana_dud_wrar_2.Da_T[arr]) / ana_cud_wrar_2.Da_T[arr]) * 100)
+    err_Da_T_wrar_3[arr] = float((abs(ana_cud_wrar_3.Da_T[arr] - ana_dud_wrar_3.Da_T[arr]) / ana_cud_wrar_3.Da_T[arr]) * 100)
+    
+    err_Da_T_nptmax_1[arr] = float((abs(ana_cud_nptmax_1.Da_T[arr] - ana_dud_nptmax_1.Da_T[arr]) / ana_cud_nptmax_1.Da_T[arr]) * 100)
+    err_Da_T_nptmax_2[arr] = float((abs(ana_cud_nptmax_2.Da_T[arr] - ana_dud_nptmax_2.Da_T[arr]) / ana_cud_nptmax_2.Da_T[arr]) * 100)
+    err_Da_T_nptmax_3[arr] = float((abs(ana_cud_nptmax_3.Da_T[arr] - ana_dud_nptmax_3.Da_T[arr]) / ana_cud_nptmax_3.Da_T[arr]) * 100)
+    err_Da_T_nptmax_4[arr] = float((abs(ana_cud_nptmax_4.Da_T[arr] - ana_dud_nptmax_4.Da_T[arr]) / ana_cud_nptmax_4.Da_T[arr]) * 100)
+    
+    err_Da_T_wbo_1[arr] = float((abs(ana_cud_wbo_1.Da_T[arr] - ana_dud_wbo_1.Da_T[arr]) / ana_cud_wbo_1.Da_T[arr]) * 100)
+    err_Da_T_wbo_2[arr] = float((abs(ana_cud_wbo_2.Da_T[arr] - ana_dud_wbo_2.Da_T[arr]) / ana_cud_wbo_2.Da_T[arr]) * 100)
+    err_Da_T_wbo_3[arr] = float((abs(ana_cud_wbo_3.Da_T[arr] - ana_dud_wbo_3.Da_T[arr]) / ana_cud_wbo_3.Da_T[arr]) * 100)
+    err_Da_T_wbo_4[arr] = float((abs(ana_cud_wbo_4.Da_T[arr] - ana_dud_wbo_4.Da_T[arr]) / ana_cud_wbo_4.Da_T[arr]) * 100)
+    
+    err_Ur_PUSCH_T_m_1[arr] = float((abs(ana_cud_m_1.Ur_PUSCH_T[arr] - ana_dud_m_1.Ur_PUSCH_T[arr]) / ana_cud_m_1.Ur_PUSCH_T[arr]) * 100)
+    err_Ur_PUSCH_T_m_2[arr] = float((abs(ana_cud_m_2.Ur_PUSCH_T[arr] - ana_dud_m_2.Ur_PUSCH_T[arr]) / ana_cud_m_2.Ur_PUSCH_T[arr]) * 100)
+    err_Ur_PUSCH_T_m_3[arr] = float((abs(ana_cud_m_3.Ur_PUSCH_T[arr] - ana_dud_m_3.Ur_PUSCH_T[arr]) / ana_cud_m_3.Ur_PUSCH_T[arr]) * 100)
+    
+    err_Ur_PUSCH_T_N_1[arr] = float((abs(ana_cud_N_1.Ur_PUSCH_T[arr] - ana_dud_N_1.Ur_PUSCH_T[arr]) / ana_cud_N_1.Ur_PUSCH_T[arr]) * 100)
+    err_Ur_PUSCH_T_N_2[arr] = float((abs(ana_cud_N_2.Ur_PUSCH_T[arr] - ana_dud_N_2.Ur_PUSCH_T[arr]) / ana_cud_N_2.Ur_PUSCH_T[arr]) * 100)
+    err_Ur_PUSCH_T_N_3[arr] = float((abs(ana_cud_N_3.Ur_PUSCH_T[arr] - ana_dud_N_3.Ur_PUSCH_T[arr]) / ana_cud_N_3.Ur_PUSCH_T[arr]) * 100)
+    
+    err_Ur_PUSCH_T_wrar_1[arr] = float((abs(ana_cud_wrar_1.Ur_PUSCH_T[arr] - ana_dud_wrar_1.Ur_PUSCH_T[arr]) / ana_cud_wrar_1.Ur_PUSCH_T[arr]) * 100)
+    err_Ur_PUSCH_T_wrar_2[arr] = float((abs(ana_cud_wrar_2.Ur_PUSCH_T[arr] - ana_dud_wrar_2.Ur_PUSCH_T[arr]) / ana_cud_wrar_2.Ur_PUSCH_T[arr]) * 100)
+    err_Ur_PUSCH_T_wrar_3[arr] = float((abs(ana_cud_wrar_3.Ur_PUSCH_T[arr] - ana_dud_wrar_3.Ur_PUSCH_T[arr]) / ana_cud_wrar_3.Ur_PUSCH_T[arr]) * 100)
+    
+    err_Ur_PUSCH_T_nptmax_1[arr] = float((abs(ana_cud_nptmax_1.Ur_PUSCH_T[arr] - ana_dud_nptmax_1.Ur_PUSCH_T[arr]) / ana_cud_wbo_1.Ur_PUSCH_T[arr]) * 100)
+    err_Ur_PUSCH_T_nptmax_2[arr] = float((abs(ana_cud_nptmax_2.Ur_PUSCH_T[arr] - ana_dud_nptmax_2.Ur_PUSCH_T[arr]) / ana_cud_wbo_2.Ur_PUSCH_T[arr]) * 100)
+    err_Ur_PUSCH_T_nptmax_3[arr] = float((abs(ana_cud_nptmax_3.Ur_PUSCH_T[arr] - ana_dud_nptmax_3.Ur_PUSCH_T[arr]) / ana_cud_wbo_3.Ur_PUSCH_T[arr]) * 100)
+    err_Ur_PUSCH_T_nptmax_4[arr] = float((abs(ana_cud_nptmax_4.Ur_PUSCH_T[arr] - ana_dud_nptmax_4.Ur_PUSCH_T[arr]) / ana_cud_wbo_4.Ur_PUSCH_T[arr]) * 100)
+    
+    err_Ur_PUSCH_T_wbo_1[arr] = float((abs(ana_cud_wbo_1.Ur_PUSCH_T[arr] - ana_dud_wbo_1.Ur_PUSCH_T[arr]) / ana_cud_wbo_1.Ur_PUSCH_T[arr]) * 100)
+    err_Ur_PUSCH_T_wbo_2[arr] = float((abs(ana_cud_wbo_2.Ur_PUSCH_T[arr] - ana_dud_wbo_2.Ur_PUSCH_T[arr]) / ana_cud_wbo_2.Ur_PUSCH_T[arr]) * 100)
+    err_Ur_PUSCH_T_wbo_3[arr] = float((abs(ana_cud_wbo_3.Ur_PUSCH_T[arr] - ana_dud_wbo_3.Ur_PUSCH_T[arr]) / ana_cud_wbo_3.Ur_PUSCH_T[arr]) * 100)
+    err_Ur_PUSCH_T_wbo_4[arr] = float((abs(ana_cud_wbo_4.Ur_PUSCH_T[arr] - ana_dud_wbo_4.Ur_PUSCH_T[arr]) / ana_cud_wbo_4.Ur_PUSCH_T[arr]) * 100)
+
+fig, ax1 = plt.subplots(nrows=5, ncols=3)
+ax2_1 = ax1[0][0].twinx()
+plot_1111 = ax1[0][0].plot(arrival_rate, ana_cud_m_1.Ps_T, '-', color = 'red', label = 'Cont. Uni, $1:1$')
+plot_1112 = ax1[0][0].plot(arrival_rate, ana_cud_m_2.Ps_T, '-', color = 'blue', label = 'Cont. Uni, $2:1$')
+plot_1113 = ax1[0][0].plot(arrival_rate, ana_cud_m_3.Ps_T, '-', color = 'gold', label = 'Cont. Uni, $1:2$')
+
+plot_1121 = ax1[0][0].plot(arrival_rate, ana_dud_m_1.Ps_T, '-', color = 'darkred', label = 'Disc. Uni, $1:1$')
+plot_1122 = ax1[0][0].plot(arrival_rate, ana_dud_m_2.Ps_T, '-', color = 'dodgerblue', label = 'Disc. Uni, $2:1$')
+plot_1123 = ax1[0][0].plot(arrival_rate, ana_dud_m_3.Ps_T, '-', color = 'darkgoldenrod', label = 'Disc. Uni, $1:2$')
+
+plot_1131 = ax2_1.plot(arrival_rate, err_Ps_T_m_1, '-', color = 'green', label = 'Trans. Err, $1:1$')
+plot_1132 = ax2_1.plot(arrival_rate, err_Ps_T_m_2, '-', color = 'darkgreen', label = 'Trans. Err, $2:1$')
+plot_1133 = ax2_1.plot(arrival_rate, err_Ps_T_m_3, '-', color = 'lightgreen', label = 'Trans. Err, $1:2$')
+
+plt.xscale('log')
+ax1[0][0].set_xlabel("Arrival Rate of UEs ($\lambda$)", fontsize=6)
+ax1[0][0].set_ylabel("Total Successful Accessed Probability ($P_s$)", fontsize=6)
+ax2_1.set_ylabel("Error (%)", fontsize=6)
+
+ax1[0][0].tick_params(axis='x', labelcolor='black', labelsize=6)
+ax1[0][0].tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_1.tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_1.set_ylim([0, 100])
+
+plt.grid(True, which="both")
+lns = plot_1111 + plot_1112 + plot_1113 + plot_1121 + plot_1122 + plot_1123 + plot_1131 + plot_1132 + plot_1133
+labels = [l.get_label() for l in lns]
+plt.legend(lns, labels, markerscale=1, fontsize=8, loc='best', bbox_to_anchor=(1, 1))
+
+ax2_2 = ax1[0][1].twinx()
+plot_1211 = ax1[0][1].plot(arrival_rate, ana_cud_m_1.Da_T, '-', color = 'red', label = 'Cont. Uni, $1:1$')
+plot_1212 = ax1[0][1].plot(arrival_rate, ana_cud_m_2.Da_T, '-', color = 'blue', label = 'Cont. Uni, $2:1$')
+plot_1213 = ax1[0][1].plot(arrival_rate, ana_cud_m_3.Da_T, '-', color = 'gold', label = 'Cont. Uni, $1:2$')
+
+plot_1221 = ax1[0][1].plot(arrival_rate, ana_dud_m_1.Da_T, '-', color = 'darkred', label = 'Disc. Uni, $1:1$')
+plot_1222 = ax1[0][1].plot(arrival_rate, ana_dud_m_2.Da_T, '-', color = 'dodgerblue', label = 'Disc. Uni, $2:1$')
+plot_1223 = ax1[0][1].plot(arrival_rate, ana_dud_m_3.Da_T, '-', color = 'darkgoldenrod', label = 'Disc. Uni, $1:2$')
+
+plot_1231 = ax2_2.plot(arrival_rate, err_Da_T_m_1, '-', color = 'green', label = 'Trans. Err, $1:1$')
+plot_1232 = ax2_2.plot(arrival_rate, err_Da_T_m_2, '-', color = 'darkgreen', label = 'Trans. Err, $2:1$')
+plot_1233 = ax2_2.plot(arrival_rate, err_Da_T_m_3, '-', color = 'lightgreen', label = 'Trans. Err, $1:2$')
+
+plt.xscale('log')
+ax1[0][1].set_xlabel("Arrival Rate of UEs ($\lambda$)", fontsize=6)
+ax1[0][1].set_ylabel("Total Average Successful Accessed Delay ($\overline{D_{a}}$)", fontsize=6)
+ax2_2.set_ylabel("Error (%)", fontsize=6)
+
+ax1[0][1].tick_params(axis='x', labelcolor='black', labelsize=6)
+ax1[0][1].tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_2.tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_2.set_ylim([0, 100])
+
+plt.grid(True, which="both")
+lns = plot_1211 + plot_1212 + plot_1213 + plot_1221 + plot_1222 + plot_1223 + plot_1231 + plot_1232 + plot_1233
+labels = [l.get_label() for l in lns]
+plt.legend(lns, labels, markerscale=1, fontsize=8, loc='best', bbox_to_anchor=(0.3, 1))
+
+ax2_3 = ax1[0][2].twinx()
+plot_1311 = ax1[0][2].plot(arrival_rate, ana_cud_m_1.Ur_PUSCH_T, '-', color = 'red', label = 'Cont. Uni, $1:1$')
+plot_1312 = ax1[0][2].plot(arrival_rate, ana_cud_m_2.Ur_PUSCH_T, '-', color = 'blue', label = 'Cont. Uni, $2:1$')
+plot_1313 = ax1[0][2].plot(arrival_rate, ana_cud_m_3.Ur_PUSCH_T, '-', color = 'gold', label = 'Cont. Uni, $1:2$')
+
+plot_1321 = ax1[0][2].plot(arrival_rate, ana_dud_m_1.Ur_PUSCH_T, '-', color = 'darkred', label = 'Disc. Uni, $1:1$')
+plot_1322 = ax1[0][2].plot(arrival_rate, ana_dud_m_2.Ur_PUSCH_T, '-', color = 'dodgerblue', label = 'Disc. Uni, $2:1$')
+plot_1323 = ax1[0][2].plot(arrival_rate, ana_dud_m_3.Ur_PUSCH_T, '-', color = 'darkgoldenrod', label = 'Disc. Uni, $1:2$')
+
+plot_1331 = ax2_3.plot(arrival_rate, err_Ur_PUSCH_T_m_1, '-', color = 'green', label = 'Trans. Err, $1:1$')
+plot_1332 = ax2_3.plot(arrival_rate, err_Ur_PUSCH_T_m_2, '-', color = 'darkgreen', label = 'Trans. Err, $2:1$')
+plot_1333 = ax2_3.plot(arrival_rate, err_Ur_PUSCH_T_m_3, '-', color = 'lightgreen', label = 'Trans. Err, $1:2$')
+
+plt.xscale('log')
+ax1[0][2].set_xlabel("Arrival Rate of UEs ($\lambda$)", fontsize=6)
+ax1[0][2].set_ylabel("Total Use of PUSCH Resources ($R_u$)", fontsize=6)
+ax2_3.set_ylabel("Error (%)", fontsize=6)
+
+ax1[0][2].tick_params(axis='x', labelcolor='black', labelsize=6)
+ax1[0][2].tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_3.tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_3.set_ylim([0, 100])
+
+plt.grid(True, which="both")
+lns = plot_1311 + plot_1312 + plot_1313 + plot_1321 + plot_1322 + plot_1323 + plot_1331 + plot_1332 + plot_1333
+labels = [l.get_label() for l in lns]
+plt.legend(lns, labels, markerscale=1, fontsize=8, loc='best', bbox_to_anchor=(1, 1))
+
+ax2_4 = ax1[1][0].twinx()
+plot_2111 = ax1[1][0].plot(arrival_rate, ana_cud_N_1.Ps_T, '-', color = 'red', label = 'Cont. Uni, $27, 27$')
+plot_2112 = ax1[1][0].plot(arrival_rate, ana_cud_N_2.Ps_T, '-', color = 'blue', label = 'Cont. Uni, $36, 18$')
+plot_2113 = ax1[1][0].plot(arrival_rate, ana_cud_N_3.Ps_T, '-', color = 'gold', label = 'Cont. Uni, $18, 36$')
+
+plot_2121 = ax1[1][0].plot(arrival_rate, ana_dud_N_1.Ps_T, '-', color = 'darkred', label = 'Disc. Uni, $27, 27$')
+plot_2122 = ax1[1][0].plot(arrival_rate, ana_dud_N_2.Ps_T, '-', color = 'dodgerblue', label = 'Disc. Uni, $36, 18$')
+plot_2123 = ax1[1][0].plot(arrival_rate, ana_dud_N_3.Ps_T, '-', color = 'darkgoldenrod', label = 'Disc. Uni, $18, 36$')
+
+plot_2131 = ax2_4.plot(arrival_rate, err_Ps_T_N_1, '-', color = 'green', label = 'Trans. Err, $27, 27$')
+plot_2132 = ax2_4.plot(arrival_rate, err_Ps_T_N_2, '-', color = 'darkgreen', label = 'Trans. Err, $36, 18$')
+plot_2133 = ax2_4.plot(arrival_rate, err_Ps_T_N_3, '-', color = 'lightgreen', label = 'Trans. Err, $18, 36$')
+
+plt.xscale('log')
+ax1[1][0].set_xlabel("Arrival Rate of UEs ($\lambda$)", fontsize=6)
+ax1[1][0].set_ylabel("Total Successful Accessed Probability ($P_s$)", fontsize=6)
+ax2_4.set_ylabel("Error (%)", fontsize=6)
+
+ax1[1][0].tick_params(axis='x', labelcolor='black', labelsize=6)
+ax1[1][0].tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_4.tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_4.set_ylim([0, 100])
+
+plt.grid(True, which="both")
+lns = plot_2111 + plot_2112 + plot_2113 + plot_2121 + plot_2122 + plot_2123 + plot_2131 + plot_2132 + plot_2133
+labels = [l.get_label() for l in lns]
+plt.legend(lns, labels, markerscale=1, fontsize=8, loc='best', bbox_to_anchor=(1, 1))
+
+ax2_5 = ax1[1][1].twinx()
+plot_2211 = ax1[1][1].plot(arrival_rate, ana_cud_N_1.Da_T, '-', color = 'red', label = 'Cont. Uni, $27, 27$')
+plot_2212 = ax1[1][1].plot(arrival_rate, ana_cud_N_2.Da_T, '-', color = 'blue', label = 'Cont. Uni, $36, 18$')
+plot_2213 = ax1[1][1].plot(arrival_rate, ana_cud_N_3.Da_T, '-', color = 'gold', label = 'Cont. Uni, $18, 36$')
+
+plot_2221 = ax1[1][1].plot(arrival_rate, ana_dud_N_1.Da_T, '-', color = 'darkred', label = 'Disc. Uni, $27, 27$')
+plot_2222 = ax1[1][1].plot(arrival_rate, ana_dud_N_2.Da_T, '-', color = 'dodgerblue', label = 'Disc. Uni, $36, 18$')
+plot_2223 = ax1[1][1].plot(arrival_rate, ana_dud_N_3.Da_T, '-', color = 'darkgoldenrod', label = 'Disc. Uni, $18, 36$')
+
+plot_2231 = ax2_5.plot(arrival_rate, err_Da_T_N_1, '-', color = 'green', label = 'Trans. Err, $27, 27$')
+plot_2232 = ax2_5.plot(arrival_rate, err_Da_T_N_2, '-', color = 'darkgreen', label = 'Trans. Err, $36, 18$')
+plot_2233 = ax2_5.plot(arrival_rate, err_Da_T_N_3, '-', color = 'lightgreen', label = 'Trans. Err, $18, 36$')
+
+plt.xscale('log')
+ax1[1][1].set_xlabel("Arrival Rate of UEs ($\lambda$)", fontsize=6)
+ax1[1][1].set_ylabel("Total Average Successful Accessed Delay ($\overline{D_{a}}$)", fontsize=6)
+ax2_5.set_ylabel("Error (%)", fontsize=6)
+
+ax1[1][1].tick_params(axis='x', labelcolor='black', labelsize=6)
+ax1[1][1].tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_5.tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_5.set_ylim([0, 100])
+
+plt.grid(True, which="both")
+lns = plot_2211 + plot_2212 + plot_2213 + plot_2221 + plot_2222 + plot_2223 + plot_2231 + plot_2232 + plot_2233
+labels = [l.get_label() for l in lns]
+plt.legend(lns, labels, markerscale=1, fontsize=8, loc='best', bbox_to_anchor=(0.33, 1))
+
+ax2_6 = ax1[1][2].twinx()
+plot_2311 = ax1[1][2].plot(arrival_rate, ana_cud_N_1.Ur_PUSCH_T, '-', color = 'red', label = 'Cont. Uni, $27, 27$')
+plot_2312 = ax1[1][2].plot(arrival_rate, ana_cud_N_2.Ur_PUSCH_T, '-', color = 'blue', label = 'Cont. Uni, $36, 18$')
+plot_2313 = ax1[1][2].plot(arrival_rate, ana_cud_N_3.Ur_PUSCH_T, '-', color = 'gold', label = 'Cont. Uni, $18, 36$')
+
+plot_2321 = ax1[1][2].plot(arrival_rate, ana_dud_N_1.Ur_PUSCH_T, '-', color = 'darkred', label = 'Disc. Uni, $27, 27$')
+plot_2322 = ax1[1][2].plot(arrival_rate, ana_dud_N_2.Ur_PUSCH_T, '-', color = 'dodgerblue', label = 'Disc. Uni, $36, 18$')
+plot_2323 = ax1[1][2].plot(arrival_rate, ana_dud_N_3.Ur_PUSCH_T, '-', color = 'darkgoldenrod', label = 'Disc. Uni, $18, 36$')
+
+plot_2331 = ax2_6.plot(arrival_rate, err_Ur_PUSCH_T_N_1, '-', color = 'green', label = 'Trans. Err, $27, 27$')
+plot_2332 = ax2_6.plot(arrival_rate, err_Ur_PUSCH_T_N_2, '-', color = 'darkgreen', label = 'Trans. Err, $36, 18$')
+plot_2333 = ax2_6.plot(arrival_rate, err_Ur_PUSCH_T_N_3, '-', color = 'lightgreen', label = 'Trans. Err, $18, 36$')
+
+plt.xscale('log')
+ax1[1][2].set_xlabel("Arrival Rate of UEs ($\lambda$)", fontsize=6)
+ax1[1][2].set_ylabel("Total Use of PUSCH Resources ($R_u$)", fontsize=6)
+ax2_6.set_ylabel("Error (%)", fontsize=6)
+
+ax1[1][2].tick_params(axis='x', labelcolor='black', labelsize=6)
+ax1[1][2].tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_6.tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_6.set_ylim([0, 100])
+
+plt.grid(True, which="both")
+lns = plot_2311 + plot_2312 + plot_2313 + plot_2321 + plot_2322 + plot_2323 + plot_2331 + plot_2332 + plot_2333
+labels = [l.get_label() for l in lns]
+plt.legend(lns, labels, markerscale=1, fontsize=8, loc='best', bbox_to_anchor=(1, 1))
+
+ax2_7 = ax1[2][0].twinx()
+plot_3111 = ax1[2][0].plot(arrival_rate, ana_cud_wrar_1.Ps_T, '-', color = 'red', label = 'Cont. Uni, $5$')
+plot_3112 = ax1[2][0].plot(arrival_rate, ana_cud_wrar_2.Ps_T, '-', color = 'blue', label = 'Cont. Uni, $15$')
+plot_3113 = ax1[2][0].plot(arrival_rate, ana_cud_wrar_3.Ps_T, '-', color = 'gold', label = 'Cont. Uni, $30$')
+
+plot_3121 = ax1[2][0].plot(arrival_rate, ana_dud_wrar_1.Ps_T, '-', color = 'darkred', label = 'Disc. Uni, $5$')
+plot_3122 = ax1[2][0].plot(arrival_rate, ana_dud_wrar_2.Ps_T, '-', color = 'dodgerblue', label = 'Disc. Uni, $15$')
+plot_3123 = ax1[2][0].plot(arrival_rate, ana_dud_wrar_3.Ps_T, '-', color = 'darkgoldenrod', label = 'Disc. Uni, $30$')
+
+plot_3131 = ax2_7.plot(arrival_rate, err_Ps_T_wrar_1, '-', color = 'green', label = 'Trans. Err, $5$')
+plot_3132 = ax2_7.plot(arrival_rate, err_Ps_T_wrar_2, '-', color = 'darkgreen', label = 'Trans. Err, $15$')
+plot_3133 = ax2_7.plot(arrival_rate, err_Ps_T_wrar_3, '-', color = 'lightgreen', label = 'Trans. Err, $30$')
+
+plt.xscale('log')
+ax1[2][0].set_xlabel("Arrival Rate of UEs ($\lambda$)", fontsize=6)
+ax1[2][0].set_ylabel("Total Successful Accessed Probability ($P_s$)", fontsize=6)
+ax2_7.set_ylabel("Error (%)", fontsize=6)
+
+ax1[2][0].tick_params(axis='x', labelcolor='black', labelsize=6)
+ax1[2][0].tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_7.tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_7.set_ylim([0, 100])
+
+plt.grid(True, which="both")
+lns = plot_3111 + plot_3112 + plot_3113 + plot_3121 + plot_3122 + plot_3123 + plot_3131 + plot_3132 + plot_3133
+labels = [l.get_label() for l in lns]
+plt.legend(lns, labels, markerscale=1, fontsize=8, loc='best', bbox_to_anchor=(1, 1))
+
+ax2_8 = ax1[2][1].twinx()
+plot_3211 = ax1[2][1].plot(arrival_rate, ana_cud_wrar_1.Da_T, '-', color = 'red', label = 'Cont. Uni, $5$')
+plot_3212 = ax1[2][1].plot(arrival_rate, ana_cud_wrar_2.Da_T, '-', color = 'blue', label = 'Cont. Uni, $15$')
+plot_3213 = ax1[2][1].plot(arrival_rate, ana_cud_wrar_3.Da_T, '-', color = 'gold', label = 'Cont. Uni, $30$')
+
+plot_3221 = ax1[2][1].plot(arrival_rate, ana_dud_wrar_1.Da_T, '-', color = 'darkred', label = 'Disc. Uni, $5$')
+plot_3222 = ax1[2][1].plot(arrival_rate, ana_dud_wrar_2.Da_T, '-', color = 'dodgerblue', label = 'Disc. Uni, $15$')
+plot_3223 = ax1[2][1].plot(arrival_rate, ana_dud_wrar_3.Da_T, '-', color = 'darkgoldenrod', label = 'Disc. Uni, $30$')
+
+plot_3231 = ax2_8.plot(arrival_rate, err_Da_T_wrar_1, '-', color = 'green', label = 'Trans. Err, $5$')
+plot_3232 = ax2_8.plot(arrival_rate, err_Da_T_wrar_2, '-', color = 'darkgreen', label = 'Trans. Err, $15$')
+plot_3233 = ax2_8.plot(arrival_rate, err_Da_T_wrar_3, '-', color = 'lightgreen', label = 'Trans. Err, $30$')
+
+plt.xscale('log')
+ax1[2][1].set_xlabel("Arrival Rate of UEs ($\lambda$)", fontsize=6)
+ax1[2][1].set_ylabel("Total Average Successful Accessed Delay ($\overline{D_{a}}$)", fontsize=6)
+ax2_8.set_ylabel("Error (%)", fontsize=6)
+
+ax1[2][1].tick_params(axis='x', labelcolor='black', labelsize=6)
+ax1[2][1].tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_8.tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_8.set_ylim([0, 100])
+
+plt.grid(True, which="both")
+lns = plot_3211 + plot_3212 + plot_3213 + plot_3221 + plot_3222 + plot_3223 + plot_3231 + plot_3232 + plot_3233
+labels = [l.get_label() for l in lns]
+plt.legend(lns, labels, markerscale=1, fontsize=8, loc='best', bbox_to_anchor=(0.29, 1))
+
+ax2_9 = ax1[2][2].twinx()
+plot_3311 = ax1[2][2].plot(arrival_rate, ana_cud_wrar_1.Ur_PUSCH_T, '-', color = 'red', label = 'Cont. Uni, $5$')
+plot_3312 = ax1[2][2].plot(arrival_rate, ana_cud_wrar_2.Ur_PUSCH_T, '-', color = 'blue', label = 'Cont. Uni, $15$')
+plot_3313 = ax1[2][2].plot(arrival_rate, ana_cud_wrar_3.Ur_PUSCH_T, '-', color = 'gold', label = 'Cont. Uni, $30$')
+
+plot_3321 = ax1[2][2].plot(arrival_rate, ana_dud_wrar_1.Ur_PUSCH_T, '-', color = 'darkred', label = 'Disc. Uni, $5$')
+plot_3322 = ax1[2][2].plot(arrival_rate, ana_dud_wrar_2.Ur_PUSCH_T, '-', color = 'dodgerblue', label = 'Disc. Uni, $15$')
+plot_3323 = ax1[2][2].plot(arrival_rate, ana_dud_wrar_3.Ur_PUSCH_T, '-', color = 'darkgoldenrod', label = 'Disc. Uni, $30$')
+
+plot_3331 = ax2_9.plot(arrival_rate, err_Ur_PUSCH_T_wrar_1, '-', color = 'green', label = 'Trans. Err, $5$')
+plot_3332 = ax2_9.plot(arrival_rate, err_Ur_PUSCH_T_wrar_2, '-', color = 'darkgreen', label = 'Trans. Err, $15$')
+plot_3333 = ax2_9.plot(arrival_rate, err_Ur_PUSCH_T_wrar_3, '-', color = 'lightgreen', label = 'Trans. Err, $30$')
+
+plt.xscale('log')
+ax1[2][2].set_xlabel("Arrival Rate of UEs ($\lambda$)", fontsize=6)
+ax1[2][2].set_ylabel("Total Use of PUSCH Resources ($R_u$)", fontsize=6)
+ax2_9.set_ylabel("Error (%)", fontsize=6)
+
+ax1[2][2].tick_params(axis='x', labelcolor='black', labelsize=6)
+ax1[2][2].tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_9.tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_9.set_ylim([0, 100])
+
+plt.grid(True, which="both")
+lns = plot_3311 + plot_3312 + plot_3313 + plot_3321 + plot_3322 + plot_3323 + plot_3331 + plot_3332 + plot_3333
+labels = [l.get_label() for l in lns]
+plt.legend(lns, labels, markerscale=1, fontsize=8, loc='best', bbox_to_anchor=(1, 1))
+
+ax2_10 = ax1[3][0].twinx()
+plot_4111 = ax1[3][0].plot(arrival_rate, ana_cud_nptmax_1.Ps_T, '-', color = 'red', label = 'Cont. Uni, $5, 5, 5$')
+plot_4112 = ax1[3][0].plot(arrival_rate, ana_cud_nptmax_2.Ps_T, '-', color = 'blue', label = 'Cont. Uni, $10, 5, 5$')
+plot_4113 = ax1[3][0].plot(arrival_rate, ana_cud_nptmax_3.Ps_T, '-', color = 'gold', label = 'Cont. Uni, $5, 10, 5$')
+plot_4114 = ax1[3][0].plot(arrival_rate, ana_cud_nptmax_4.Ps_T, '-', color = 'violet', label = 'Cont. Uni, $5, 5, 10$')
+
+plot_4121 = ax1[3][0].plot(arrival_rate, ana_dud_nptmax_1.Ps_T, '-', color = 'darkred', label = 'Disc. Uni, $5, 5, 5$')
+plot_4122 = ax1[3][0].plot(arrival_rate, ana_dud_nptmax_2.Ps_T, '-', color = 'dodgerblue', label = 'Disc. Uni, $10, 5, 5$')
+plot_4123 = ax1[3][0].plot(arrival_rate, ana_dud_nptmax_3.Ps_T, '-', color = 'darkgoldenrod', label = 'Disc. Uni, $5, 10, 5$')
+plot_4124 = ax1[3][0].plot(arrival_rate, ana_dud_nptmax_4.Ps_T, '-', color = 'darkviolet', label = 'Disc. Uni, $5, 5, 10$')
+
+plot_4131 = ax2_10.plot(arrival_rate, err_Ps_T_nptmax_1, '-', color = 'green', label = 'Trans. Err, $5, 5, 5$')
+plot_4132 = ax2_10.plot(arrival_rate, err_Ps_T_nptmax_2, '-', color = 'darkgreen', label = 'Trans. Err, $10, 5, 5$')
+plot_4133 = ax2_10.plot(arrival_rate, err_Ps_T_nptmax_3, '-', color = 'lightgreen', label = 'Trans. Err, $5, 10, 5$')
+plot_4134 = ax2_10.plot(arrival_rate, err_Ps_T_nptmax_4, '-', color = 'limegreen', label = 'Trans. Err, $5, 5, 10$')
+
+plt.xscale('log')
+ax1[3][0].set_xlabel("Arrival Rate of UEs ($\lambda$)", fontsize=6)
+ax1[3][0].set_ylabel("Total Successful Accessed Probability ($P_s$)", fontsize=6)
+ax2_10.set_ylabel("Error (%)", fontsize=6)
+
+ax1[3][0].tick_params(axis='x', labelcolor='black', labelsize=6)
+ax1[3][0].tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_10.tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_10.set_ylim([0, 100])
+
+plt.grid(True, which="both")
+lns = plot_4111 + plot_4112 + plot_4113 + plot_4114 + plot_4121 + plot_4122 + plot_4123 + plot_4124 + plot_4131 + plot_4132 + plot_4133 + plot_4134
+labels = [l.get_label() for l in lns]
+plt.legend(lns, labels, markerscale=1, fontsize=8, loc='best', bbox_to_anchor=(1, 1))
+
+ax2_11 = ax1[3][1].twinx()
+plot_4211 = ax1[3][1].plot(arrival_rate, ana_cud_nptmax_1.Da_T, '-', color = 'red', label = 'Cont. Uni, $5, 5, 5$')
+plot_4212 = ax1[3][1].plot(arrival_rate, ana_cud_nptmax_2.Da_T, '-', color = 'blue', label = 'Cont. Uni, $10, 5, 5$')
+plot_4213 = ax1[3][1].plot(arrival_rate, ana_cud_nptmax_3.Da_T, '-', color = 'gold', label = 'Cont. Uni, $5, 10, 5$')
+plot_4214 = ax1[3][1].plot(arrival_rate, ana_cud_nptmax_4.Da_T, '-', color = 'violet', label = 'Cont. Uni, $5, 5, 10$')
+
+plot_4221 = ax1[3][1].plot(arrival_rate, ana_dud_nptmax_1.Da_T, '-', color = 'darkred', label = 'Disc. Uni, $5, 5, 5$')
+plot_4222 = ax1[3][1].plot(arrival_rate, ana_dud_nptmax_2.Da_T, '-', color = 'dodgerblue', label = 'Disc. Uni, $10, 5, 5$')
+plot_4223 = ax1[3][1].plot(arrival_rate, ana_dud_nptmax_3.Da_T, '-', color = 'darkgoldenrod', label = 'Disc. Uni, $5, 10, 5$')
+plot_4224 = ax1[3][1].plot(arrival_rate, ana_dud_nptmax_4.Da_T, '-', color = 'darkviolet', label = 'Disc. Uni, $5, 5, 10$')
+
+plot_4231 = ax2_11.plot(arrival_rate, err_Da_T_nptmax_1, '-', color = 'green', label = 'Trans. Err, $5, 5, 5$')
+plot_4232 = ax2_11.plot(arrival_rate, err_Da_T_nptmax_2, '-', color = 'darkgreen', label = 'Trans. Err, $10, 5, 5$')
+plot_4233 = ax2_11.plot(arrival_rate, err_Da_T_nptmax_3, '-', color = 'lightgreen', label = 'Trans. Err, $5, 10, 5$')
+plot_4234 = ax2_11.plot(arrival_rate, err_Da_T_nptmax_4, '-', color = 'limegreen', label = 'Trans. Err, $5, 5, 10$')
+
+plt.xscale('log')
+ax1[3][1].set_xlabel("Arrival Rate of UEs ($\lambda$)", fontsize=6)
+ax1[3][1].set_ylabel("Total Average Successful Accessed Delay ($\overline{D_{a}}$)", fontsize=6)
+ax2_11.set_ylabel("Error (%)", fontsize=6)
+
+ax1[3][1].tick_params(axis='x', labelcolor='black', labelsize=6)
+ax1[3][1].tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_11.tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_11.set_ylim([0, 100])
+
+plt.grid(True, which="both")
+lns = plot_4211 + plot_4212 + plot_4213 + plot_4214 + plot_4221 + plot_4222 + plot_4223 + plot_4224 + plot_4231 + plot_4232 + plot_4233 + plot_4234
+labels = [l.get_label() for l in lns]
+plt.legend(lns, labels, markerscale=1, fontsize=8, loc='upper left', bbox_to_anchor=(0.01, 1))
+
+ax2_12 = ax1[3][2].twinx()
+plot_4311 = ax1[3][2].plot(arrival_rate, ana_cud_nptmax_1.Ur_PUSCH_T, '-', color = 'red', label = 'Cont. Uni, $5, 5, 5$')
+plot_4312 = ax1[3][2].plot(arrival_rate, ana_cud_nptmax_2.Ur_PUSCH_T, '-', color = 'blue', label = 'Cont. Uni, $10, 5, 5$')
+plot_4313 = ax1[3][2].plot(arrival_rate, ana_cud_nptmax_3.Ur_PUSCH_T, '-', color = 'gold', label = 'Cont. Uni, $5, 10, 5$')
+plot_4314 = ax1[3][2].plot(arrival_rate, ana_cud_nptmax_4.Ur_PUSCH_T, '-', color = 'violet', label = 'Cont. Uni, $5, 5, 10$')
+
+plot_4321 = ax1[3][2].plot(arrival_rate, ana_dud_nptmax_1.Ur_PUSCH_T, '-', color = 'darkred', label = 'Disc. Uni, $5, 5, 5$')
+plot_4322 = ax1[3][2].plot(arrival_rate, ana_dud_nptmax_2.Ur_PUSCH_T, '-', color = 'dodgerblue', label = 'Disc. Uni, $10, 5, 5$')
+plot_4323 = ax1[3][2].plot(arrival_rate, ana_dud_nptmax_3.Ur_PUSCH_T, '-', color = 'darkgoldenrod', label = 'Disc. Uni, $5, 10, 5$')
+plot_4324 = ax1[3][2].plot(arrival_rate, ana_dud_nptmax_4.Ur_PUSCH_T, '-', color = 'darkviolet', label = 'Disc. Uni, $5, 5, 10$')
+
+plot_4331 = ax2_12.plot(arrival_rate, err_Ur_PUSCH_T_nptmax_1, '-', color = 'green', label = 'Trans. Err, $5, 5, 5$')
+plot_4332 = ax2_12.plot(arrival_rate, err_Ur_PUSCH_T_nptmax_2, '-', color = 'darkgreen', label = 'Trans. Err, $10, 5, 5$')
+plot_4333 = ax2_12.plot(arrival_rate, err_Ur_PUSCH_T_nptmax_3, '-', color = 'lightgreen', label = 'Trans. Err, $5, 10, 5$')
+plot_4334 = ax2_12.plot(arrival_rate, err_Ur_PUSCH_T_nptmax_4, '-', color = 'limegreen', label = 'Trans. Err, $5, 5, 10$')
+
+plt.xscale('log')
+ax1[3][2].set_xlabel("Arrival Rate of UEs ($\lambda$)", fontsize=6)
+ax1[3][2].set_ylabel("Total Use of PUSCH Resources ($R_u$)", fontsize=6)
+ax2_12.set_ylabel("Error (%)", fontsize=6)
+
+ax1[3][2].tick_params(axis='x', labelcolor='black', labelsize=6)
+ax1[3][2].tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_12.tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_12.set_ylim([0, 100])
+
+plt.grid(True, which="both")
+lns = plot_4311 + plot_4312 + plot_4313 + plot_4314 + plot_4321 + plot_4322 + plot_4323 + plot_4324 + plot_4331 + plot_4332 + plot_4333 + plot_4334
+labels = [l.get_label() for l in lns]
+plt.legend(lns, labels, markerscale=1, fontsize=8, loc='best', bbox_to_anchor=(1, 1))
+
+ax2_13 = ax1[4][0].twinx()
+plot_5111 = ax1[4][0].plot(arrival_rate, ana_cud_wbo_1.Ps_T, '-', color = 'red', label = 'Cont. Uni, $20, 20, 20$')
+plot_5112 = ax1[4][0].plot(arrival_rate, ana_cud_wbo_2.Ps_T, '-', color = 'blue', label = 'Cont. Uni, $40, 20, 20$')
+plot_5113 = ax1[4][0].plot(arrival_rate, ana_cud_wbo_3.Ps_T, '-', color = 'gold', label = 'Cont. Uni, $20, 40, 20$')
+plot_5114 = ax1[4][0].plot(arrival_rate, ana_cud_wbo_4.Ps_T, '-', color = 'violet', label = 'Cont. Uni, $20, 20, 40$')
+
+plot_5121 = ax1[4][0].plot(arrival_rate, ana_dud_wbo_1.Ps_T, '-', color = 'darkred', label = 'Disc. Uni, $20, 20, 20$')
+plot_5122 = ax1[4][0].plot(arrival_rate, ana_dud_wbo_2.Ps_T, '-', color = 'dodgerblue', label = 'Disc. Uni, $40, 20, 20$')
+plot_5123 = ax1[4][0].plot(arrival_rate, ana_dud_wbo_3.Ps_T, '-', color = 'darkgoldenrod', label = 'Disc. Uni, $20, 40, 20$')
+plot_5124 = ax1[4][0].plot(arrival_rate, ana_dud_wbo_4.Ps_T, '-', color = 'darkviolet', label = 'Disc. Uni, $20, 20, 40$')
+
+plot_5131 = ax2_13.plot(arrival_rate, err_Ps_T_wbo_1, '-', color = 'green', label = 'Trans. Err, $20, 20, 20$')
+plot_5132 = ax2_13.plot(arrival_rate, err_Ps_T_wbo_2, '-', color = 'darkgreen', label = 'Trans. Err, $40, 20, 20$')
+plot_5133 = ax2_13.plot(arrival_rate, err_Ps_T_wbo_3, '-', color = 'lightgreen', label = 'Trans. Err, $20, 40, 20$')
+plot_5134 = ax2_13.plot(arrival_rate, err_Ps_T_wbo_4, '-', color = 'limegreen', label = 'Trans. Err, $20, 20, 40$')
+
+plt.xscale('log')
+ax1[4][0].set_xlabel("Arrival Rate of UEs ($\lambda$)", fontsize=6)
+ax1[4][0].set_ylabel("Total Successful Accessed Probability ($P_s$)", fontsize=6)
+ax2_13.set_ylabel("Error (%)", fontsize=6)
+
+ax1[4][0].tick_params(axis='x', labelcolor='black', labelsize=6)
+ax1[4][0].tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_13.tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_13.set_ylim([0, 100])
+
+plt.grid(True, which="both")
+lns = plot_5111 + plot_5112 + plot_5113 + plot_5114 + plot_5121 + plot_5122 + plot_5123 + plot_5124 + plot_5131 + plot_5132 + plot_5133 + plot_5134
+labels = [l.get_label() for l in lns]
+plt.legend(lns, labels, markerscale=1, fontsize=8, loc='best', bbox_to_anchor=(1, 1))
+
+ax2_14 = ax1[4][1].twinx()
+plot_5211 = ax1[4][1].plot(arrival_rate, ana_cud_wbo_1.Da_T, '-', color = 'red', label = 'Cont. Uni, $20, 20, 20$')
+plot_5212 = ax1[4][1].plot(arrival_rate, ana_cud_wbo_2.Da_T, '-', color = 'blue', label = 'Cont. Uni, $40, 20, 20$')
+plot_5213 = ax1[4][1].plot(arrival_rate, ana_cud_wbo_3.Da_T, '-', color = 'gold', label = 'Cont. Uni, $20, 40, 20$')
+plot_5214 = ax1[4][1].plot(arrival_rate, ana_cud_wbo_4.Da_T, '-', color = 'violet', label = 'Cont. Uni, $20, 20, 40$')
+
+plot_5221 = ax1[4][1].plot(arrival_rate, ana_dud_wbo_1.Da_T, '-', color = 'darkred', label = 'Disc. Uni, $20, 20, 20$')
+plot_5222 = ax1[4][1].plot(arrival_rate, ana_dud_wbo_2.Da_T, '-', color = 'dodgerblue', label = 'Disc. Uni, $40, 20, 20$')
+plot_5223 = ax1[4][1].plot(arrival_rate, ana_dud_wbo_3.Da_T, '-', color = 'darkgoldenrod', label = 'Disc. Uni, $20, 40, 20$')
+plot_5224 = ax1[4][1].plot(arrival_rate, ana_dud_wbo_4.Da_T, '-', color = 'darkviolet', label = 'Disc. Uni, $20, 20, 40$')
+
+plot_5231 = ax2_14.plot(arrival_rate, err_Da_T_wbo_1, '-', color = 'green', label = 'Trans. Err, $20, 20, 20$')
+plot_5232 = ax2_14.plot(arrival_rate, err_Da_T_wbo_2, '-', color = 'darkgreen', label = 'Trans. Err, $40, 20, 20$')
+plot_5233 = ax2_14.plot(arrival_rate, err_Da_T_wbo_3, '-', color = 'lightgreen', label = 'Trans. Err, $20, 40, 20$')
+plot_5234 = ax2_14.plot(arrival_rate, err_Da_T_wbo_4, '-', color = 'limegreen', label = 'Trans. Err, $20, 20, 40$')
+
+plt.xscale('log')
+ax1[4][1].set_xlabel("Arrival Rate of UEs ($\lambda$)", fontsize=6)
+ax1[4][1].set_ylabel("Total Average Successful Accessed Delay ($\overline{D_{a}}$)", fontsize=6)
+ax2_14.set_ylabel("Error (%)", fontsize=6)
+
+ax1[4][1].tick_params(axis='x', labelcolor='black', labelsize=6)
+ax1[4][1].tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_14.tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_14.set_ylim([0, 100])
+
+plt.grid(True, which="both")
+lns = plot_5211 + plot_5212 + plot_5213 + plot_5214 + plot_5221 + plot_5222 + plot_5223 + plot_5224 + plot_5231 + plot_5232 + plot_5233 + plot_5234
+labels = [l.get_label() for l in lns]
+plt.legend(lns, labels, markerscale=1, fontsize=8, loc='upper left', bbox_to_anchor=(0.01, 1))
+
+ax2_15 = ax1[4][2].twinx()
+plot_5311 = ax1[4][2].plot(arrival_rate, ana_cud_wbo_1.Ur_PUSCH_T, '-', color = 'red', label = 'Cont. Uni, $20, 20, 20$')
+plot_5312 = ax1[4][2].plot(arrival_rate, ana_cud_wbo_2.Ur_PUSCH_T, '-', color = 'blue', label = 'Cont. Uni, $40, 20, 20$')
+plot_5313 = ax1[4][2].plot(arrival_rate, ana_cud_wbo_3.Ur_PUSCH_T, '-', color = 'gold', label = 'Cont. Uni, $20, 40, 20$')
+plot_5314 = ax1[4][2].plot(arrival_rate, ana_cud_wbo_4.Ur_PUSCH_T, '-', color = 'violet', label = 'Cont. Uni, $20, 20, 40$')
+
+plot_5321 = ax1[4][2].plot(arrival_rate, ana_dud_wbo_1.Ur_PUSCH_T, '-', color = 'darkred', label = 'Disc. Uni, $20, 20, 20$')
+plot_5322 = ax1[4][2].plot(arrival_rate, ana_dud_wbo_2.Ur_PUSCH_T, '-', color = 'dodgerblue', label = 'Disc. Uni, $40, 20, 20$')
+plot_5323 = ax1[4][2].plot(arrival_rate, ana_dud_wbo_3.Ur_PUSCH_T, '-', color = 'darkgoldenrod', label = 'Disc. Uni, $20, 40, 20$')
+plot_5324 = ax1[4][2].plot(arrival_rate, ana_dud_wbo_4.Ur_PUSCH_T, '-', color = 'darkviolet', label = 'Disc. Uni, $20, 20, 40$')
+
+plot_5331 = ax2_15.plot(arrival_rate, err_Ur_PUSCH_T_wbo_1, '-', color = 'green', label = 'Trans. Err, $20, 20, 20$')
+plot_5332 = ax2_15.plot(arrival_rate, err_Ur_PUSCH_T_wbo_2, '-', color = 'darkgreen', label = 'Trans. Err, $40, 20, 20$')
+plot_5333 = ax2_15.plot(arrival_rate, err_Ur_PUSCH_T_wbo_3, '-', color = 'lightgreen', label = 'Trans. Err, $20, 40, 20$')
+plot_5334 = ax2_15.plot(arrival_rate, err_Ur_PUSCH_T_wbo_4, '-', color = 'limegreen', label = 'Trans. Err, $20, 20, 40$')
+
+plt.xscale('log')
+ax1[4][2].set_xlabel("Arrival Rate of UEs ($\lambda$)", fontsize=6)
+ax1[4][2].set_ylabel("Total Use of PUSCH Resources ($R_u$)", fontsize=6)
+ax2_15.set_ylabel("Error (%)", fontsize=6)
+
+ax1[4][2].tick_params(axis='x', labelcolor='black', labelsize=6)
+ax1[4][2].tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_15.tick_params(axis='y', labelcolor='black', labelsize=6)
+ax2_15.set_ylim([0, 100])
+
+plt.grid(True, which="both")
+lns = plot_5311 + plot_5312 + plot_5313 + plot_5314 + plot_5321 + plot_5322 + plot_5323 + plot_5324 + plot_5331 + plot_5332 + plot_5333 + plot_5334
+labels = [l.get_label() for l in lns]
+plt.legend(lns, labels, markerscale=1, fontsize=8, loc='best', bbox_to_anchor=(1, 1))
+
+plt.suptitle("(a) $\lambda$ versus $P_s$                                               (b) $\lambda$ versus $\overline{D_{a}}$                                               (c) $\lambda$ versus $R_u$", fontsize=18, x=0.515, y=0.09)
+
+plt.rcParams["figure.figsize"] = (20, 25)
+plt.show()
