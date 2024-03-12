@@ -1,0 +1,59 @@
+ana_m_1 = pandas.read_csv('./prebackoff_ana_testing/ana_testresult_1e4_m_1.csv') # 0, 20 20 20
+sim_m_1 = pandas.read_csv('./prebackoff_ana_testing/sim_testresult_1e4_m_1.csv')
+ana_m_1_prebackoff = pandas.read_csv('./prebackoff_ana_testing/ana_testresult_1e4_m_1_prebackoff.csv') # 120, 120 120 120
+sim_m_1_prebackoff = pandas.read_csv('./prebackoff_ana_testing/sim_testresult_5e2_m_1_prebackoff.csv')
+ana_m_1_prebackoff_2 = pandas.read_csv('./prebackoff_ana_testing/ana_testresult_1e4_m_1_prebackoff_2.csv') # 120, 20 20 20
+sim_m_1_prebackoff_2 = pandas.read_csv('./prebackoff_ana_testing/sim_testresult_5e2_m_1_prebackoff_2.csv')
+
+plt.subplot(131)
+plt.plot(arrival_rate, ana_m_1.Ps_T, '-', color = 'black', label = 'ana, $1:1$')
+plt.plot(arrival_rate, sim_m_1.Ps_T, 'o', ms = 3, color = 'black', label = 'sim, $1:1$')
+plt.plot(arrival_rate, ana_m_1_prebackoff.Ps_T, '-', color = 'red', label = 'ana_pre, $1:1$')
+plt.plot(arrival_rate, sim_m_1_prebackoff.Ps_T, 'o', ms = 3, color = 'red', label = 'sim_pre, $1:1$')
+plt.plot(arrival_rate, ana_m_1_prebackoff_2.Ps_T, '-', color = 'blue', label = 'ana_pre_2, $1:1$')
+plt.plot(arrival_rate, sim_m_1_prebackoff_2.Ps_T, 'o', ms = 3, color = 'blue', label = 'sim_pre_2, $1:1$')
+plt.xscale('log')
+plt.xlabel("$Lambda$")
+plt.ylabel("Ps_T")
+# plt.title("(a) $M_T$ versus $P_s$")
+# plt.suptitle("(a) $M_T$ versus $P_s$", fontsize=18, x=0.23, y=0.0)
+plt.grid(True, which="both")
+
+plt.legend(markerscale=1, fontsize=8, loc='best', bbox_to_anchor=(1, 1))
+
+plt.subplot(132)
+plt.plot(arrival_rate, ana_m_1.Da_T, '-', color = 'black', label = 'ana, $1:1$')
+plt.plot(arrival_rate, sim_m_1.Da_T, 'o', ms = 3, color = 'black', label = 'sim, $1:1$')
+plt.plot(arrival_rate, ana_m_1_prebackoff.Da_T, '-', color = 'red', label = 'ana_pre, $1:1$')
+plt.plot(arrival_rate, sim_m_1_prebackoff.Da_T, 'o', ms = 3, color = 'red', label = 'sim_pre, $1:1$')
+plt.plot(arrival_rate, ana_m_1_prebackoff_2.Da_T, '-', color = 'blue', label = 'ana_pre_2, $1:1$')
+plt.plot(arrival_rate, sim_m_1_prebackoff_2.Da_T, 'o', ms = 3, color = 'blue', label = 'sim_pre_2, $1:1$')
+# plt.ticklabel_format(axis='both', style='sci', scilimits=(0, 0))
+plt.xscale('log')
+plt.xlabel("$Lambda$")
+plt.ylabel("Da_T")
+# plt.title("(b) $M_T$ versus $\overline{D_{a}}$")
+plt.grid(True, which="both")
+
+plt.legend(markerscale=1, fontsize=8, loc='upper left', bbox_to_anchor=(0, 1))
+
+plt.subplot(133)
+plt.plot(arrival_rate, ana_m_1.Ur_PUSCH_T, '-', color = 'black', label = 'ana, $1:1$')
+plt.plot(arrival_rate, sim_m_1.Ur_PUSCH_T, 'o', ms = 3, color = 'black', label = 'sim, $1:1$')
+plt.plot(arrival_rate, ana_m_1_prebackoff.Ur_PUSCH_T, '-', color = 'red', label = 'ana_pre, $1:1$')
+plt.plot(arrival_rate, sim_m_1_prebackoff.Ur_PUSCH_T, 'o', ms = 3, color = 'red', label = 'sim_pre, $1:1$')
+plt.plot(arrival_rate, ana_m_1_prebackoff_2.Ur_PUSCH_T, '-', color = 'blue', label = 'ana_pre_2, $1:1$')
+plt.plot(arrival_rate, sim_m_1_prebackoff_2.Ur_PUSCH_T, 'o', ms = 3, color = 'blue', label = 'sim_pre_2, $1:1$')
+# plt.ticklabel_format(axis='both', style='sci', scilimits=(0, 3))
+# plt.xscale('log')
+plt.xlabel("$Lambda$")
+plt.ylabel("Ur_PUSCH_T")
+# plt.title("(c) $M_T$ versus $R_u$")
+plt.grid(True, which="both")
+
+# plt.suptitle("(a) $M_T$ versus $P_s$                                           (b) $M_T$ versus $\overline{D_{a}}$                                           (c) $M_T$ versus $R_u$", fontsize=18, x=0.51, y=0.0)
+
+
+plt.legend(markerscale=1, fontsize=8, loc='best')
+plt.rcParams["figure.figsize"] = (20, 5)
+plt.show()

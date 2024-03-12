@@ -1,0 +1,231 @@
+figure_fontsize = 10
+legend_fontsize = 10
+
+ana_MiSn_OSplusUD = pandas.read_csv('./thesis_MiSn_error/ana_testresult_1e4_MiSn_OSplusUD.csv')
+sim_MiSn_OSplusUD = pandas.read_csv('./thesis_MiSn_error/sim_testresult_1e4_MiSn_OSplusUD.csv')
+
+ana_MiSn_OSonly = pandas.read_csv('./thesis_MiSn_error/ana_testresult_1e4_MiSn_OSonly.csv')
+sim_MiSn_OSonly = pandas.read_csv('./thesis_MiSn_error/sim_testresult_1e4_MiSn_OSonly.csv')
+
+ana_MiSn_UDonly = pandas.read_csv('./thesis_MiSn_error/ana_testresult_1e4_MiSn_UDonly.csv')
+sim_MiSn_UDonly = pandas.read_csv('./thesis_MiSn_error/sim_testresult_1e4_MiSn_UDonly.csv')
+
+err_MiSn_OSplusUD_4SRA = [0.0 for i in range(0, len(ana_MiSn_OSplusUD.Slot))]
+err_MiSn_OSplusUD_2SRA = [0.0 for i in range(0, len(ana_MiSn_OSplusUD.Slot))]
+err_MiSn_OSplusUD_FB = [0.0 for i in range(0, len(ana_MiSn_OSplusUD.Slot))]
+
+err_MiSn_OSonly_4SRA = [0.0 for i in range(0, len(ana_MiSn_OSonly.Slot))]
+err_MiSn_OSonly_2SRA = [0.0 for i in range(0, len(ana_MiSn_OSonly.Slot))]
+err_MiSn_OSonly_FB = [0.0 for i in range(0, len(ana_MiSn_OSonly.Slot))]
+
+err_MiSn_UDonly_4SRA = [0.0 for i in range(0, len(ana_MiSn_UDonly.Slot))]
+err_MiSn_UDonly_2SRA = [0.0 for i in range(0, len(ana_MiSn_UDonly.Slot))]
+err_MiSn_UDonly_FB = [0.0 for i in range(0, len(ana_MiSn_UDonly.Slot))]
+    
+for s in range(0, len(ana_MiSn_OSplusUD.Slot)):
+    err_MiSn_OSplusUD_4SRA[s] = error_rate(ana_MiSn_OSplusUD.MiSn_4SRA[s], sim_MiSn_OSplusUD.MiSn_4SRA[s])
+    err_MiSn_OSplusUD_2SRA[s] = error_rate(ana_MiSn_OSplusUD.MiSn_2SRA[s], sim_MiSn_OSplusUD.MiSn_2SRA[s])
+    err_MiSn_OSplusUD_FB[s] = error_rate(ana_MiSn_OSplusUD.MiSn_FB[s], sim_MiSn_OSplusUD.MiSn_FB[s])
+    
+    err_MiSn_OSonly_4SRA[s] = error_rate(ana_MiSn_OSonly.MiSn_4SRA[s], sim_MiSn_OSonly.MiSn_4SRA[s])
+    err_MiSn_OSonly_2SRA[s] = error_rate(ana_MiSn_OSonly.MiSn_2SRA[s], sim_MiSn_OSonly.MiSn_2SRA[s])
+    err_MiSn_OSonly_FB[s] = error_rate(ana_MiSn_OSonly.MiSn_FB[s], sim_MiSn_OSonly.MiSn_FB[s])
+    
+    err_MiSn_UDonly_4SRA[s] = error_rate(ana_MiSn_UDonly.MiSn_4SRA[s], sim_MiSn_UDonly.MiSn_4SRA[s])
+    err_MiSn_UDonly_2SRA[s] = error_rate(ana_MiSn_UDonly.MiSn_2SRA[s], sim_MiSn_UDonly.MiSn_2SRA[s])
+    err_MiSn_UDonly_FB[s] = error_rate(ana_MiSn_UDonly.MiSn_FB[s], sim_MiSn_UDonly.MiSn_FB[s])
+
+fig, ax1 = plt.subplots(nrows=3, ncols=3)
+# fig.tight_layout(pad = 5.0) # set subplot gap method
+
+ax2_11 = ax1[0][0].twinx()
+plot_111 = ax1[0][0].plot(ana_MiSn_OSplusUD.Slot, ana_MiSn_OSplusUD.MiSn_4SRA, '-', color = 'black', label = 'ana, Traffic Model')
+plot_112 = ax1[0][0].plot(sim_MiSn_OSplusUD.Slot, sim_MiSn_OSplusUD.MiSn_4SRA, 'o', ms = 3, color = 'black', label = 'sim, Traffic Model')
+plot_113 = ax2_11.plot(ana_MiSn_OSplusUD.Slot, err_MiSn_OSplusUD_4SRA, '-', color = 'green', label = 'err, Traffic Model')
+plt.xscale('log')
+ax1[0][0].set_xlabel("Slot", fontsize=figure_fontsize)
+ax1[0][0].set_ylabel("MiSn_4SRA", fontsize=figure_fontsize)
+ax1[0][0].set_ylim([0, 5])
+ax2_11.set_ylabel("Error (%)", fontsize=figure_fontsize)
+ax2_11.set_ylim([0, 100])
+
+ax1[0][0].tick_params(axis='x', labelcolor='black', labelsize=figure_fontsize)
+ax1[0][0].tick_params(axis='y', labelcolor='black', labelsize=figure_fontsize)
+ax2_11.tick_params(axis='y', labelcolor='black', labelsize=figure_fontsize)
+
+plt.grid(True, which="both")
+lns = plot_111 + plot_112 + plot_113
+labels = [l.get_label() for l in lns]
+plt.legend(lns, labels, markerscale=1, fontsize=legend_fontsize, loc='upper center', bbox_to_anchor=(0.7, 1))
+
+ax2_12 = ax1[0][1].twinx()
+plot_121 = ax1[0][1].plot(ana_MiSn_OSplusUD.Slot, ana_MiSn_OSplusUD.MiSn_2SRA, '-', color = 'black', label = 'ana, Traffic Model')
+plot_122 = ax1[0][1].plot(sim_MiSn_OSplusUD.Slot, sim_MiSn_OSplusUD.MiSn_2SRA, 'o', ms = 3, color = 'black', label = 'sim, Traffic Model')
+plot_123 = ax2_12.plot(ana_MiSn_OSplusUD.Slot, err_MiSn_OSplusUD_2SRA, '-', color = 'green', label = 'err, Traffic Model')
+plt.xscale('log')
+ax1[0][1].set_xlabel("Slot", fontsize=figure_fontsize)
+ax1[0][1].set_ylabel("MiSn_2SRA", fontsize=figure_fontsize)
+ax1[0][1].set_ylim([0, 10])
+ax2_12.set_ylabel("Error (%)", fontsize=figure_fontsize)
+ax2_12.set_ylim([0, 100])
+
+ax1[0][1].tick_params(axis='x', labelcolor='black', labelsize=figure_fontsize)
+ax1[0][1].tick_params(axis='y', labelcolor='black', labelsize=figure_fontsize)
+ax2_12.tick_params(axis='y', labelcolor='black', labelsize=figure_fontsize)
+
+plt.grid(True, which="both")
+lns = plot_121 + plot_122 + plot_123
+labels = [l.get_label() for l in lns]
+plt.legend(lns, labels, markerscale=1, fontsize=legend_fontsize, loc='upper center', bbox_to_anchor=(0.7, 1))
+
+ax2_13 = ax1[0][2].twinx()
+plot_131 = ax1[0][2].plot(ana_MiSn_OSplusUD.Slot, ana_MiSn_OSplusUD.MiSn_FB, '-', color = 'black', label = 'ana, Traffic Model')
+plot_132 = ax1[0][2].plot(sim_MiSn_OSplusUD.Slot, sim_MiSn_OSplusUD.MiSn_FB, 'o', ms = 3, color = 'black', label = 'sim, Traffic Model')
+plot_133 = ax2_13.plot(ana_MiSn_OSplusUD.Slot, err_MiSn_OSplusUD_FB, '-', color = 'green', label = 'err, Traffic Model')
+plt.xscale('log')
+ax1[0][2].set_xlabel("Slot", fontsize=figure_fontsize)
+ax1[0][2].set_ylabel("MiSn_FB", fontsize=figure_fontsize)
+ax1[0][2].set_ylim([0, 12])
+ax2_13.set_ylabel("Error (%)", fontsize=figure_fontsize)
+ax2_13.set_ylim([0, 100])
+
+ax1[0][2].tick_params(axis='x', labelcolor='black', labelsize=figure_fontsize)
+ax1[0][2].tick_params(axis='y', labelcolor='black', labelsize=figure_fontsize)
+ax2_13.tick_params(axis='y', labelcolor='black', labelsize=figure_fontsize)
+
+plt.grid(True, which="both")
+lns = plot_131 + plot_132 + plot_133
+labels = [l.get_label() for l in lns]
+plt.legend(lns, labels, markerscale=1, fontsize=legend_fontsize, loc='best', bbox_to_anchor=(1, 1))
+
+ax2_21 = ax1[1][0].twinx()
+plot_211 = ax1[1][0].plot(ana_MiSn_OSonly.Slot, ana_MiSn_OSonly.MiSn_4SRA, '-', color = 'black', label = 'ana, One-shot')
+plot_212 = ax1[1][0].plot(sim_MiSn_OSonly.Slot, sim_MiSn_OSonly.MiSn_4SRA, 'o', ms = 3, color = 'black', label = 'sim, One-shot')
+plot_213 = ax2_21.plot(ana_MiSn_OSonly.Slot, err_MiSn_OSonly_4SRA, '-', color = 'green', label = 'err, One-shot')
+plt.xscale('log')
+ax1[1][0].set_xlabel("Slot", fontsize=figure_fontsize)
+ax1[1][0].set_ylabel("MiSn_4SRA", fontsize=figure_fontsize)
+ax1[1][0].set_ylim([0, 5])
+ax2_21.set_ylabel("Error (%)", fontsize=figure_fontsize)
+ax2_21.set_ylim([0, 100])
+
+ax1[1][0].tick_params(axis='x', labelcolor='black', labelsize=figure_fontsize)
+ax1[1][0].tick_params(axis='y', labelcolor='black', labelsize=figure_fontsize)
+ax2_21.tick_params(axis='y', labelcolor='black', labelsize=figure_fontsize)
+
+plt.grid(True, which="both")
+lns = plot_211 + plot_212 + plot_213
+labels = [l.get_label() for l in lns]
+plt.legend(lns, labels, markerscale=1, fontsize=legend_fontsize, loc='best', bbox_to_anchor=(1, 1))
+
+ax2_22 = ax1[1][1].twinx()
+plot_221 = ax1[1][1].plot(ana_MiSn_OSonly.Slot, ana_MiSn_OSonly.MiSn_2SRA, '-', color = 'black', label = 'ana, One-shot')
+plot_222 = ax1[1][1].plot(sim_MiSn_OSonly.Slot, sim_MiSn_OSonly.MiSn_2SRA, 'o', ms = 3, color = 'black', label = 'sim, One-shot')
+plot_223 = ax2_22.plot(ana_MiSn_OSonly.Slot, err_MiSn_OSonly_2SRA, '-', color = 'green', label = 'err, One-shot')
+plt.xscale('log')
+ax1[1][1].set_xlabel("Slot", fontsize=figure_fontsize)
+ax1[1][1].set_ylabel("MiSn_2SRA", fontsize=figure_fontsize)
+ax1[1][1].set_ylim([0, 10])
+ax2_22.set_ylabel("Error (%)", fontsize=figure_fontsize)
+ax2_22.set_ylim([0, 100])
+
+ax1[1][1].tick_params(axis='x', labelcolor='black', labelsize=figure_fontsize)
+ax1[1][1].tick_params(axis='y', labelcolor='black', labelsize=figure_fontsize)
+ax2_22.tick_params(axis='y', labelcolor='black', labelsize=figure_fontsize)
+
+plt.grid(True, which="both")
+lns = plot_221 + plot_222 + plot_223
+labels = [l.get_label() for l in lns]
+plt.legend(lns, labels, markerscale=1, fontsize=legend_fontsize, loc='best', bbox_to_anchor=(1, 1))
+
+ax2_23 = ax1[1][2].twinx()
+plot_231 = ax1[1][2].plot(ana_MiSn_OSonly.Slot, ana_MiSn_OSonly.MiSn_FB, '-', color = 'black', label = 'ana, One-shot')
+plot_232 = ax1[1][2].plot(sim_MiSn_OSonly.Slot, sim_MiSn_OSonly.MiSn_FB, 'o', ms = 3, color = 'black', label = 'sim, One-shot')
+plot_233 = ax2_23.plot(ana_MiSn_OSonly.Slot, err_MiSn_OSonly_FB, '-', color = 'green', label = 'err, One-shot')
+plt.xscale('log')
+ax1[1][2].set_xlabel("Slot", fontsize=figure_fontsize)
+ax1[1][2].set_ylabel("MiSn_FB", fontsize=figure_fontsize)
+ax1[1][2].set_ylim([0, 12])
+ax2_23.set_ylabel("Error (%)", fontsize=figure_fontsize)
+ax2_23.set_ylim([0, 100])
+
+ax1[1][2].tick_params(axis='x', labelcolor='black', labelsize=figure_fontsize)
+ax1[1][2].tick_params(axis='y', labelcolor='black', labelsize=figure_fontsize)
+ax2_23.tick_params(axis='y', labelcolor='black', labelsize=figure_fontsize)
+
+plt.grid(True, which="both")
+lns = plot_231 + plot_232 + plot_233
+labels = [l.get_label() for l in lns]
+plt.legend(lns, labels, markerscale=1, fontsize=legend_fontsize, loc='best', bbox_to_anchor=(1, 1))
+
+ax2_31 = ax1[2][0].twinx()
+plot_311 = ax1[2][0].plot(ana_MiSn_UDonly.Slot, ana_MiSn_UDonly.MiSn_4SRA, '-', color = 'black', label = 'ana, Uniform')
+plot_312 = ax1[2][0].plot(sim_MiSn_UDonly.Slot, sim_MiSn_UDonly.MiSn_4SRA, 'o', ms = 3, color = 'black', label = 'sim, Uniform')
+plot_313 = ax2_31.plot(ana_MiSn_UDonly.Slot, err_MiSn_UDonly_4SRA, '-', color = 'green', label = 'err, Uniform')
+plt.xscale('log')
+ax1[2][0].set_xlabel("Slot", fontsize=figure_fontsize)
+ax1[2][0].set_ylabel("MiSn_4SRA", fontsize=figure_fontsize)
+ax1[2][0].set_ylim([0, 0.001])
+ax2_31.set_ylabel("Error (%)", fontsize=figure_fontsize)
+ax2_31.set_ylim([0, 100])
+
+ax1[2][0].tick_params(axis='x', labelcolor='black', labelsize=figure_fontsize)
+ax1[2][0].tick_params(axis='y', labelcolor='black', labelsize=figure_fontsize)
+ax1[2][0].ticklabel_format(axis='y', style='sci', scilimits=(0, 0))
+ax2_31.tick_params(axis='y', labelcolor='black', labelsize=figure_fontsize)
+
+plt.grid(True, which="both")
+lns = plot_311 + plot_312 + plot_313
+labels = [l.get_label() for l in lns]
+plt.legend(lns, labels, markerscale=1, fontsize=legend_fontsize, loc='upper left', bbox_to_anchor=(0, 1))
+
+ax2_32 = ax1[2][1].twinx()
+plot_321 = ax1[2][1].plot(ana_MiSn_UDonly.Slot, ana_MiSn_UDonly.MiSn_2SRA, '-', color = 'black', label = 'ana, Uniform')
+plot_322 = ax1[2][1].plot(sim_MiSn_UDonly.Slot, sim_MiSn_UDonly.MiSn_2SRA, 'o', ms = 3, color = 'black', label = 'sim, Uniform')
+plot_323 = ax2_32.plot(ana_MiSn_UDonly.Slot, err_MiSn_UDonly_2SRA, '-', color = 'green', label = 'err, Uniform')
+plt.xscale('log')
+ax1[2][1].set_xlabel("Slot", fontsize=figure_fontsize)
+ax1[2][1].set_ylabel("MiSn_2SRA", fontsize=figure_fontsize)
+ax1[2][1].set_ylim([0, 0.001])
+ax2_32.set_ylabel("Error (%)", fontsize=figure_fontsize)
+ax2_32.set_ylim([0, 100])
+
+ax1[2][1].tick_params(axis='x', labelcolor='black', labelsize=figure_fontsize)
+ax1[2][1].tick_params(axis='y', labelcolor='black', labelsize=figure_fontsize)
+ax1[2][1].ticklabel_format(axis='y', style='sci', scilimits=(0, 0))
+ax2_32.tick_params(axis='y', labelcolor='black', labelsize=figure_fontsize)
+
+plt.grid(True, which="both")
+lns = plot_321 + plot_322 + plot_323
+labels = [l.get_label() for l in lns]
+plt.legend(lns, labels, markerscale=1, fontsize=legend_fontsize, loc='upper left', bbox_to_anchor=(0, 1))
+
+ax2_33 = ax1[2][2].twinx()
+plot_331 = ax1[2][2].plot(ana_MiSn_UDonly.Slot, ana_MiSn_UDonly.MiSn_FB, '-', color = 'black', label = 'ana, Uniform')
+plot_332 = ax1[2][2].plot(sim_MiSn_UDonly.Slot, sim_MiSn_UDonly.MiSn_FB, 'o', ms = 3, color = 'black', label = 'sim, Uniform')
+plot_333 = ax2_33.plot(ana_MiSn_UDonly.Slot, err_MiSn_UDonly_FB, '-', color = 'green', label = 'err, Uniform')
+plt.xscale('log')
+ax1[2][2].set_xlabel("Slot", fontsize=figure_fontsize)
+ax1[2][2].set_ylabel("MiSn_FB", fontsize=figure_fontsize)
+ax1[2][2].set_ylim([0, 0.001])
+ax2_33.set_ylabel("Error (%)", fontsize=figure_fontsize)
+ax2_33.set_ylim([0, 100])
+
+ax1[2][2].tick_params(axis='x', labelcolor='black', labelsize=figure_fontsize)
+ax1[2][2].tick_params(axis='y', labelcolor='black', labelsize=figure_fontsize)
+ax1[2][2].ticklabel_format(axis='y', style='sci', scilimits=(0, 0))
+ax2_33.tick_params(axis='y', labelcolor='black', labelsize=figure_fontsize)
+
+plt.grid(True, which="both")
+lns = plot_331 + plot_332 + plot_333
+labels = [l.get_label() for l in lns]
+plt.legend(lns, labels, markerscale=1, fontsize=legend_fontsize, loc='best', bbox_to_anchor=(1, 1))
+
+# plt.suptitle("(a) 4-step RA procedure                                        (b) 2-step RA procedure                                             (c) Switch procedure", fontsize=20, x=0.5, y=0.06)
+ax1[2][0].set_title("(a) 4-step RA procedure ", loc='center', fontsize=20, y=-0.22)
+ax1[2][1].set_title("(b) 2-step RA procedure", loc='center', fontsize=20, y=-0.22)
+ax1[2][2].set_title("(c) Switch procedure", loc='center', fontsize=20, y=-0.22)
+
+plt.rcParams["figure.figsize"] = (25, 20)
+plt.subplots_adjust(left=0.1, bottom=0.1, right=0.9, top=0.9, wspace=0.2, hspace=0.2)
+plt.show()
