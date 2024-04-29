@@ -1,0 +1,323 @@
+from matplotlib.colors import ListedColormap, BoundaryNorm
+import matplotlib.ticker as ticker
+
+def mesh_3D_plot_surface(label_fontsize, title_fontsize, tick_labelsize, 
+                         mesh_data, i_list, j_list, 
+                         x_text, y_text, axs1_text, axs2_text, axs3_text, 
+                         axs1_zlim_min, axs1_zlim_max, axs1_bounds, axs1_ticklabels, 
+                         axs2_zlim_min, axs2_zlim_max, axs2_bounds, axs2_ticklabels, 
+                         axs3_zlim_min, axs3_zlim_max, axs3_bounds, axs3_ticklabels):
+    
+    mesh_grid_shape = (len(i_list), len(j_list))
+    
+    p_wbo_flat = mesh_data[:, 1]
+    w_rar_flat = mesh_data[:, 2]
+    Ps_QoS_flat = mesh_data[:, 3]
+    Da_QoS_flat = mesh_data[:, 4]
+    Ur_QoS_flat = mesh_data[:, 5]
+    Wr_QoS_flat = mesh_data[:, 6]
+    Ru_QoS_flat = mesh_data[:, 7]
+
+    # reshape the flattened arrays back to the original mesh grid shape
+    p_wbo_mesh = p_wbo_flat.reshape(mesh_grid_shape)
+    w_rar_mesh = w_rar_flat.reshape(mesh_grid_shape)
+    Ps_QoS_mesh = Ps_QoS_flat.reshape(mesh_grid_shape)
+    Da_QoS_mesh = Da_QoS_flat.reshape(mesh_grid_shape)
+    Ur_QoS_mesh = Ur_QoS_flat.reshape(mesh_grid_shape)
+    Wr_QoS_mesh = Wr_QoS_flat.reshape(mesh_grid_shape)
+    Ru_QoS_mesh = Ru_QoS_flat.reshape(mesh_grid_shape)
+
+    # Set tick label formatter for each axis
+    formatter = ticker.ScalarFormatter(useMathText=True)
+    formatter.set_scientific(True)
+    formatter.set_powerlimits((0, 2)) # Adjust the exponent range as needed
+
+    colors = ['silver', 'darkgray', 'gray', 'dimgray', 'black']
+    bounds_Ps = axs1_bounds # Define boundaries for the colors
+    custom_cmap = ListedColormap(colors)
+    norm_Ps = BoundaryNorm(bounds_Ps, custom_cmap.N)
+
+    fig = plt.figure(figsize=(20, 10), dpi=150)
+
+    axs1 = fig.add_subplot(131, projection='3d')
+    axs2 = fig.add_subplot(132, projection='3d')
+    axs3 = fig.add_subplot(133, projection='3d')
+
+    surf1 = axs1.plot_surface(p_wbo_mesh, w_rar_mesh, Ps_QoS_mesh, cmap=custom_cmap, norm=norm_Ps, 
+                            edgecolor='royalblue', lw=0.5, rstride=1, cstride=1, alpha=0.8)
+
+    axs1.invert_xaxis()
+    # axs1.view_init(elev=45) # azim=300
+
+    axs1.set_xlabel(x_text, fontsize=label_fontsize)
+    axs1.set_ylabel(y_text, fontsize=label_fontsize)
+    axs1.set_zlabel(axs1_text, fontsize=label_fontsize)
+    axs1.set_title('Effect of ' + x_text + ' and ' + y_text + ' to ' + axs1_text, fontsize=title_fontsize)
+    axs1.set_zlim(axs1_zlim_min, axs1_zlim_max)
+
+    axs1.tick_params(axis='x', labelsize=tick_labelsize)
+    axs1.tick_params(axis='y', labelsize=tick_labelsize)
+    axs1.tick_params(axis='z', labelsize=tick_labelsize)
+
+    # Create colorbar with custom ticks and labels
+    cbar1_ax = fig.add_axes([0.35, 0.28, 0.01, 0.1]) # [left, bottom, width, height]
+    cbar1 = fig.colorbar(surf1, ax=axs1, cax=cbar1_ax, orientation='vertical') # shrink=0.2, aspect=5
+    cbar1.set_ticks(bounds_Ps)  # Set ticks to match your bounds
+    cbar1.set_ticklabels(axs1_ticklabels)  # Replace "100" with "10+" for display
+
+    bounds_Da = axs2_bounds  # Define boundaries for the colors
+    custom_cmap = ListedColormap(colors)
+    norm_Da = BoundaryNorm(bounds_Da, custom_cmap.N)
+
+    surf2 = axs2.plot_surface(p_wbo_mesh, w_rar_mesh, Da_QoS_mesh, cmap=custom_cmap, norm=norm_Da, 
+                            edgecolor='royalblue', lw=0.5, rstride=1, cstride=1, alpha=0.8)
+
+    axs2.invert_xaxis()
+    # axs2.view_init(elev=45) # azim=300
+
+    # axs2.xaxis.set_major_formatter(formatter)
+    # axs2.yaxis.set_major_formatter(formatter)
+    # axs2.zaxis.set_major_formatter(formatter)
+
+    axs2.set_xlabel(x_text, fontsize=label_fontsize)
+    axs2.set_ylabel(y_text, fontsize=label_fontsize)
+    axs2.set_zlabel(axs2_text, fontsize=label_fontsize)
+    axs2.set_title('Effect of ' + x_text + ' and ' + y_text + ' to ' + axs2_text, fontsize=title_fontsize)
+    axs2.set_zlim(axs2_zlim_min, axs2_zlim_max)
+
+    axs2.tick_params(axis='x', labelsize=tick_labelsize)
+    axs2.tick_params(axis='y', labelsize=tick_labelsize)
+    axs2.tick_params(axis='z', labelsize=tick_labelsize)
+
+    # Create colorbar with custom ticks and labels
+    cbar2_ax = fig.add_axes([0.63, 0.28, 0.01, 0.1]) # [left, bottom, width, height]
+    cbar2 = fig.colorbar(surf2, ax=axs2, cax=cbar2_ax, orientation='vertical') # shrink=0.2, aspect=5
+    cbar2.set_ticks(bounds_Da)  # Set ticks to match your bounds
+    cbar2.set_ticklabels(axs2_ticklabels)  # Replace "100" with "10+" for display
+
+    # bounds_Wr = [72000, 73000, 74000, 75000, 76000, 77000]  # Define boundaries for the colors
+    bounds_Ru = axs3_bounds  # Define boundaries for the colors
+    custom_cmap = ListedColormap(colors)
+    norm_Ru = BoundaryNorm(bounds_Ru, custom_cmap.N)
+
+    # surf3 = axs3.plot_surface(p_wbo_mesh, w_rar_mesh, Wr_QoS_mesh, cmap=custom_cmap, norm=norm_Wr, 
+    #                           edgecolor='royalblue', lw=0.5, rstride=1, cstride=1, alpha=0.8)
+    surf3 = axs3.plot_surface(p_wbo_mesh, w_rar_mesh, Ru_QoS_mesh, cmap=custom_cmap, norm=norm_Ru, 
+                            edgecolor='royalblue', lw=0.5, rstride=1, cstride=1, alpha=0.8)
+
+    axs3.invert_xaxis()
+    # axs3.view_init(elev=45) # azim=300
+
+    # axs3.xaxis.set_major_formatter(formatter)
+    # axs3.yaxis.set_major_formatter(formatter)
+    axs3.zaxis.set_major_formatter(formatter)
+
+    axs3.set_xlabel(x_text, fontsize=label_fontsize)
+    axs3.set_ylabel(y_text, fontsize=label_fontsize)
+    # axs3.set_zlabel('W_r', fontsize=label_fontsize)
+    # axs3.set_title('Effect of $W_{RAR}$ and $W_{PBO}$ to $W_{r, T}$', fontsize=18)
+    axs3.set_zlabel(axs3_text, fontsize=label_fontsize)
+    axs3.set_title('Effect of ' + x_text + ' and ' + y_text + ' to ' + axs3_text, fontsize=title_fontsize)
+    axs3.set_zlim(axs3_zlim_min, axs3_zlim_max)
+
+    axs3.tick_params(axis='x', labelsize=tick_labelsize)
+    axs3.tick_params(axis='y', labelsize=tick_labelsize)
+    axs3.tick_params(axis='z', labelsize=tick_labelsize)
+
+    # Create colorbar with custom ticks and labels
+    cbar3_ax = fig.add_axes([0.9, 0.28, 0.01, 0.1]) # [left, bottom, width, height]
+    cbar3 = fig.colorbar(surf3, ax=axs3, cax=cbar3_ax, orientation='vertical') # shrink=0.2, aspect=5
+    # cbar3.set_ticks(bounds_Wr)  # Set ticks to match your bounds
+    cbar3.set_ticks(bounds_Ru)  # Set ticks to match your bounds
+    # cbar3.set_ticklabels(['72000', '73000', '74000', '75000', '76000', '77000'])  # Replace "100" with "10+" for display
+    cbar3.set_ticklabels(axs3_ticklabels)  # Replace "100" with "10+" for display
+
+    plt.show()
+
+-----------------------------------------------------------------------------
+
+test_mode = 0
+pre_backoff = "off"
+opt_resource_test = "on"
+
+# arrival_rate = [0.05, 0.06, 0.07, 0.08, 0.09, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1] # lambda
+arrival_rate = [1]
+
+T_RAREP = 5 # 5 ms
+T_sat = 5400 # 5400 sec = 90 min
+T_cell = 13400 # 480000 ms = 480 sec = 8 mins # 240000 ms = 240 sec = 4 mins # 13400 ms = 13.4 sec
+t_c = 5386.6 # 4920 # 5160 # 5386.6 sec # t_c = T_sat - T_cell
+T_s = 1 # slot time in ms
+
+T_RTD = 12.89
+N = 4
+
+pre_backoff_wbo = 0
+
+mu_list = []
+# mu_list.append(math.exp(1))
+i = 0.1
+while i <= 2:
+    mu_list.append(round(i, 1))
+    i += 0.1
+# print(mu_list)
+
+Ps_QoS = 0
+
+m_4SRA = 1 # proportion of M_T
+m_2SRA = 1 # proportion of M_T
+
+# number of preamble
+# N_4SRA = [27]
+# N_2SRA = [27]
+N_4SRA = []
+N_2SRA = []
+for n in range(5, 31):
+  N_2SRA.append(n)
+  N_4SRA.append(54 - n)
+
+W_RAR_4sra = 20
+W_RAR_2sra = 20
+
+# number of max retransmission
+retrans_4sra = 5 # 10 # N_PTmax - 1
+retrans_2sra = 5 # 20
+retrans_FB = 5 # 20
+  
+W_BO_4sra = 20 # 120
+W_BO_2sra = 20 # 240
+W_BO_FB = 20 # 240
+
+T_RAREP_4sra = 5
+T_RAR_4sra = 0
+T_K2_4sra = 0.5
+T_delta_4sra = 1.5
+T_CR_4sra = 24
+
+T_RAREP_2sra = 5
+T_RAR_2sra = 0
+
+# T_access_4sra = 2 * T_RTD + 2 * T_s + T_RAR_4sra + W_RAR_4sra + T_K2_4sra + T_delta_4sra + T_CR_4sra
+# T_access_4sra = 2 * T_s + W_RAR_4sra + T_K2_4sra + T_delta_4sra + T_CR_4sra
+# T_access_2sra = T_RTD + 2 * T_s + T_RAR_2sra + W_RAR_2sra
+# T_access_2sra = 2 * T_s + W_RAR_2sra
+
+# T_data = T_RTD + T_K2_4sra + N * T_s
+
+# T_RA_CMPLT_4sra = T_access_4sra + T_data
+# T_RA_CMPLT_2sra = T_access_2sra + T_data
+
+# T_MSG_4sra = T_RA_CMPLT_4sra
+# T_MSG_2sra = T_RA_CMPLT_2sra
+
+I_max_4sra = T_cell
+I_max_2sra = T_cell
+I_max_FB = T_cell
+
+M_T = [0] # M_T = []
+Ps_QoS_list = [[0.0] * len(mu_list) for _ in range(0, len(N_2SRA))]
+Da_QoS_list = [[0.0] * len(mu_list) for _ in range(0, len(N_2SRA))]
+Ur_QoS_list = [[0.0] * len(mu_list) for _ in range(0, len(N_2SRA))]
+Wr_QoS_list = [[0.0] * len(mu_list) for _ in range(0, len(N_2SRA))]
+Ru_QoS_list = [[0.0] * len(mu_list) for _ in range(0, len(N_2SRA))]
+
+mu_mesh, N_2SRA_mesh = np.meshgrid(mu_list, N_2SRA)
+Ps_QoS_mesh = np.zeros_like(mu_mesh, dtype=float)
+Da_QoS_mesh = np.zeros_like(mu_mesh, dtype=float)
+Ur_QoS_mesh = np.zeros_like(mu_mesh, dtype=float)
+Wr_QoS_mesh = np.zeros_like(mu_mesh, dtype=float)
+Ru_QoS_mesh = np.zeros_like(mu_mesh, dtype=float)
+
+for arr in range(0, len(arrival_rate)):
+  total_M = int(math.ceil(arrival_rate[arr] * T_sat)) # M_T = lambda * T_sat
+  M_T[0] = total_M # M_T.append(total_M)
+  M_4SRA = []
+  M_2SRA = []
+  for m in range(0, len(M_T)):
+    M_4SRA.append(M_T[m] * (m_4SRA / (m_4SRA + m_2SRA)))
+    M_2SRA.append(M_T[m] * (m_2SRA / (m_4SRA + m_2SRA)))
+  M = len(M_T) + 1
+  
+  print("ue : ", total_M)
+  
+  for i, n in enumerate(N_2SRA):
+    
+    for j, mu in enumerate(mu_list):
+      # print("mu : ", mu)
+        
+      M_4SRA, Ms_4SRA_list, Ps_4SRA_list, Da_4SRA_list, \
+        M_2SRA, Ms_2SRA_list, Ps_2SRA_list, Da_2SRA_list, \
+          M_FB, Ms_FB_list, Ps_FB_list, Da_FB_list, \
+            Ms_T_list, Ps_T_list, Da_2SRA_T_list, Da_T_list, \
+              Ur_PUSCH_4SRA_T_list, Ur_PUSCH_2SRA_list, Ur_PUSCH_T_list, \
+                Wr_PUSCH_4SRA_T_list, Wr_PUSCH_2SRA_list, Wr_PUSCH_T_list, Ru_T_list = main(retrans_4sra, 
+                                                                                            retrans_2sra, 
+                                                                                            retrans_FB, 
+                                                                                            W_BO_4sra, 
+                                                                                            W_BO_2sra, 
+                                                                                            W_BO_FB, 
+                                                                                            (54 - n), 
+                                                                                            n,
+                                                                                            mu,
+                                                                                            W_RAR_4sra,
+                                                                                            W_RAR_2sra,
+                                                                                            pre_backoff_wbo)
+      
+      # if Ps_T_list[0] >= Ps_QoS: # and Ps_T_list[0] >= Ps_QoS_list[arr]
+      Ps_QoS_list[i][j] = Ps_T_list[0]
+      Da_QoS_list[i][j] = Da_T_list[0]
+      Ur_QoS_list[i][j] = Ur_PUSCH_T_list[0]
+      Wr_QoS_list[i][j] = Wr_PUSCH_T_list[0]
+      Ru_QoS_list[i][j] = Ru_T_list[0]
+      
+      Ps_QoS_mesh[i, j] = Ps_T_list[0]
+      Da_QoS_mesh[i, j] = Da_T_list[0]
+      Ur_QoS_mesh[i, j] = Ur_PUSCH_T_list[0]
+      Wr_QoS_mesh[i, j] = Wr_PUSCH_T_list[0]
+      Ru_QoS_mesh[i, j] = Ru_T_list[0]
+      # break
+
+pre_backoff = "off"
+opt_resource_test = "off"
+
+# flatten mesh grid data
+N_2SRA_flat = N_2SRA_mesh.flatten()
+mu_flat = mu_mesh.flatten()
+Ps_QoS_flat = Ps_QoS_mesh.flatten()
+Da_QoS_flat = Da_QoS_mesh.flatten()
+Ur_QoS_flat = Ur_QoS_mesh.flatten()
+Wr_QoS_flat = Wr_QoS_mesh.flatten()
+Ru_QoS_flat = Ru_QoS_mesh.flatten()
+
+arr_rate = []
+for i in range(0, len(N_2SRA_flat)):
+    # arr_rate.append(M_T[0])
+    arr_rate.append(arrival_rate[0])
+
+# combine flattened data into a single array
+mesh_data = np.column_stack((arr_rate, N_2SRA_flat, mu_flat, Ps_QoS_flat, Da_QoS_flat, Ur_QoS_flat, Wr_QoS_flat, Ru_QoS_flat))
+
+# save data to CSV file
+np.savetxt('ana_testresult_mesh_N_2SRA_mu_5400.csv', mesh_data, delimiter=',', 
+           header='arrival_rate, N_2SRA, mu, Ps_QoS, Da_QoS, Ur_QoS, Wr_QoS, Ru_QoS', comments='')
+
+-----------------------------------------------------------------------------
+
+N_2SRA = []
+for n in range(5, 31):
+  N_2SRA.append(n)
+
+mu_list = []
+i = 0.1
+while i <= 2:
+    mu_list.append(round(i, 1))
+    i += 0.1
+
+# Load data from CSV file
+mesh_data = np.loadtxt('./Journal_N_2SRA_mu_testing/ana_testresult_mesh_N_2SRA_mu_5400.csv', delimiter=',', skiprows=1) # Skip header row
+
+mesh_3D_plot_surface(13, 18, 11, mesh_data, N_2SRA, mu_list, 
+                     '$N_{2SRA}$', 'µ', '$P_{s, T}$', '$D_{a, T}$', '$R_{u, T}$', 
+                     0, 1, [0, 0.2, 0.4, 0.6, 0.8, 1], ['0', '0.2', '0.4', '0.6', '0.8', '1'], 
+                     200, 400, [220, 240, 260, 280, 300, 320], ['220', '240', '260', '280', '300', '320'], 
+                     0, 0.4, [0.05, 0.1, 0.15, 0.2, 0.25, 0.3], ['0.05', '0.1', '0.15', '0.2', '0.25', '0.3'])
