@@ -1,0 +1,101 @@
+def figure_plot_Da(nrow, ncol, figure_fontsize, legend_fontsize, plot_dotsize, legend_location, x_axis, 
+                y_axis_ana_1, y_axis_ana_2, y_axis_ana_3, y_axis_ana_4, 
+                y_axis_sim_1, y_axis_sim_2, y_axis_sim_3, y_axis_sim_4, 
+                legend_text_1, legend_text_2, legend_text_3, legend_text_4):
+    # err
+    err_Da_T = [[0.0] * int(len(x_axis)) for _ in range(0, 4)]
+    for r in range(0, len(x_axis)):
+        if y_axis_ana_1 is None and y_axis_sim_1 is None:
+            err_Da_T[0][r] = 0.0
+        else:
+            err_Da_T[0][r] = error_rate(y_axis_ana_1.Da_T[r], y_axis_sim_1.Da_T[r])
+        if y_axis_ana_2 is None and y_axis_sim_2 is None:
+            err_Da_T[1][r] = 0.0
+        else:
+            err_Da_T[1][r] = error_rate(y_axis_ana_2.Da_T[r], y_axis_sim_2.Da_T[r])
+        if y_axis_ana_3 is None and y_axis_sim_3 is None:
+            err_Da_T[2][r] = 0.0
+        else:
+            err_Da_T[2][r] = error_rate(y_axis_ana_3.Da_T[r], y_axis_sim_3.Da_T[r])
+        if y_axis_ana_4 is None and y_axis_sim_4 is None:
+            err_Da_T[3][r] = 0.0
+        else:
+            err_Da_T[3][r] = error_rate(y_axis_ana_4.Da_T[r], y_axis_sim_4.Da_T[r])
+    # plot figure
+    fig, ax1 = plt.subplots(nrows=nrow, ncols=ncol)
+    for col in range(0, ncol):
+        ax2 = ax1.twinx()
+        # ana
+        if y_axis_ana_1 is None:
+            plot_1 = []
+        else:
+            plot_1 = ax1.plot(x_axis, y_axis_ana_1.Da_T, '--', color = 'black', label = 'ana, ' + legend_text_1)
+        if y_axis_ana_2 is None:
+            plot_2 = []
+        else:
+            plot_2 = ax1.plot(x_axis, y_axis_ana_2.Da_T, '-', color = 'blue', label = 'ana, ' + legend_text_2)
+        if y_axis_ana_3 is None:
+            plot_3 = []
+        else:
+            plot_3 = ax1.plot(x_axis, y_axis_ana_3.Da_T, '-.', color = 'red', label = 'ana, ' + legend_text_3)
+        if y_axis_ana_4 is None:
+            plot_4 = []
+        else:
+            plot_4 = ax1.plot(x_axis, y_axis_ana_4.Da_T, ':', color = 'darkorange', label = 'ana, ' + legend_text_4)
+        # sim
+        if y_axis_sim_1 is None:
+            plot_5 = []
+        else:
+            plot_5 = ax1.plot(x_axis, y_axis_sim_1.Da_T, '1', ms = plot_dotsize, color = 'black', label = 'sim, ' + legend_text_1)
+        if y_axis_sim_2 is None:
+            plot_6 = []
+        else:
+            plot_6 = ax1.plot(x_axis, y_axis_sim_2.Da_T, '2', ms = plot_dotsize, color = 'blue', label = 'sim, ' + legend_text_2)
+        if y_axis_sim_3 is None:
+            plot_7 = []
+        else:
+            plot_7 = ax1.plot(x_axis, y_axis_sim_3.Da_T, '3', ms = plot_dotsize, color = 'red', label = 'sim, ' + legend_text_3)
+        if y_axis_sim_4 is None:
+            plot_8 = []
+        else:
+            plot_8 = ax1.plot(x_axis, y_axis_sim_4.Da_T, '4', ms = plot_dotsize, color = 'darkorange', label = 'sim, ' + legend_text_4)
+        # err
+        if y_axis_ana_1 is None and y_axis_sim_1 is None:
+            plot_9 = []
+        else:
+            plot_9 = ax2.plot(x_axis, err_Da_T[0], '-o', markerfacecolor='none', color = 'green', label = 'err, ' + legend_text_1)
+        if y_axis_ana_2 is None and y_axis_sim_2 is None:
+            plot_10 = []
+        else:
+            plot_10 = ax2.plot(x_axis, err_Da_T[1], '-s', markerfacecolor='none', color = 'lightgreen', label = 'err, ' + legend_text_2)
+        if y_axis_ana_3 is None and y_axis_sim_3 is None:
+            plot_11 = []
+        else:
+            plot_11 = ax2.plot(x_axis, err_Da_T[2], '-p', markerfacecolor='none', color = 'limegreen', label = 'err, ' + legend_text_3)
+        if y_axis_ana_4 is None and y_axis_sim_4 is None:
+            plot_12 = []
+        else:
+            plot_12 = ax2.plot(x_axis, err_Da_T[3], '-v', markerfacecolor='none', color = 'yellowgreen', label = 'err, ' + legend_text_4)
+        
+        plt.xscale('log')
+        # ax1[col].set_xlabel("Arrival Rate of UEs ($\lambda$)", color='black', fontsize=figure_fontsize)
+        ax1.set_xlabel("Total Number of UEs ($M_{T}$)", color='black', fontsize=figure_fontsize)
+        ax1.set_ylabel("Total Average Successful Accessed Delay ($\overline{D_{a,T}}$)", color='black', fontsize=figure_fontsize)
+        ax1.ticklabel_format(axis='y', style='sci', scilimits=(0, 0))
+        ax2.set_ylabel("Error (%)", color='darkgreen', fontsize=figure_fontsize)
+        ax2.set_ylim([0, 5])
+
+        ax1.tick_params(axis='x', labelcolor='black', labelsize=figure_fontsize)
+        ax1.tick_params(axis='y', labelcolor='black', labelsize=figure_fontsize)
+        ax2.tick_params(axis='y', labelcolor='darkgreen', labelsize=figure_fontsize)
+
+        ax1.grid(True, axis="both", which="both")
+        lns = plot_1 + plot_2 + plot_3 + plot_4 + plot_5 + plot_6 + plot_7 + plot_8 + plot_9 + plot_10 + plot_11 + plot_12
+        labels = [l.get_label() for l in lns]
+        # if col == 1:
+        plt.legend(lns, labels, markerscale=1, fontsize=legend_fontsize, loc=legend_location, bbox_to_anchor=(0, 1))
+    
+    # plt.suptitle("(a) $M_{T}$ versus $P_{s,T}$                                            (b) $M_{T}$ versus $\overline{D_{a,T}}$                                              (c) $M_{T}$ versus $R_{u,T}$", fontsize=18, x=0.5, y=0.0)
+    plt.rcParams["figure.figsize"] = (6, 5)
+    plt.subplots_adjust(left=0.1, bottom=0.1, right=0.9, top=0.9, wspace=0.3, hspace=0.3)
+    plt.show()
